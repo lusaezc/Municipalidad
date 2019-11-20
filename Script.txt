@@ -1,0 +1,120 @@
+
+CREATE TABLE dias_funcionario (
+    id_dias                    INTEGER NOT NULL,
+    dias_habiles_disponibles   INTEGER NOT NULL,
+    id_tipo_permiso            INTEGER NOT NULL,
+    rut                        VARCHAR2(12) NOT NULL
+);
+
+ALTER TABLE dias_funcionario ADD CONSTRAINT dias_funcionario_pk PRIMARY KEY ( id_dias );
+
+CREATE TABLE funcionario (
+    rut              VARCHAR2(12) NOT NULL,
+    pass             VARCHAR2(35) NOT NULL,
+    nombre           VARCHAR2(40) NOT NULL,
+    apellidop        VARCHAR2(15) NOT NULL,
+    apellidom        VARCHAR2(15) NOT NULL,
+    correo           VARCHAR2(100) NOT NULL,
+    fecha_contrato   DATE NOT NULL,
+    moroso           CHAR(1) NOT NULL,
+    id_unidad        INTEGER NOT NULL,
+    id_rol           INTEGER NOT NULL
+);
+
+ALTER TABLE funcionario ADD CONSTRAINT funcionario_pk PRIMARY KEY ( rut );
+
+CREATE TABLE permiso (
+    id_permiso         INTEGER NOT NULL,
+    estado             INTEGER NOT NULL,
+    observaciones      VARCHAR2(2000) NOT NULL,
+    cantidad_dias      INTEGER NOT NULL,
+    pendiente          INTEGER NOT NULL,
+    id_solicitud       INTEGER NOT NULL,
+    cod_verificacion   INTEGER NOT NULL
+);
+
+CREATE UNIQUE INDEX permiso__idx ON
+    permiso (
+        id_solicitud
+    ASC );
+
+ALTER TABLE permiso ADD CONSTRAINT permiso_pk PRIMARY KEY ( id_permiso );
+
+CREATE TABLE resolucion (
+    id_resolucion   INTEGER NOT NULL,
+    detalle         VARCHAR2(200) NOT NULL,
+    correlativo     INTEGER NOT NULL,
+    id_permiso      INTEGER NOT NULL,
+    rut             VARCHAR2(12) NOT NULL
+);
+
+ALTER TABLE resolucion ADD CONSTRAINT resolucion_pk PRIMARY KEY ( id_resolucion );
+
+CREATE TABLE rol (
+    id_rol        INTEGER NOT NULL,
+    descripcion   VARCHAR2(15) NOT NULL
+);
+
+ALTER TABLE rol ADD CONSTRAINT rol_pk PRIMARY KEY ( id_rol );
+
+CREATE TABLE solicitud (
+    id_solicitud      INTEGER NOT NULL,
+    fecha_inicio      DATE NOT NULL,
+    fecha_fin         DATE NOT NULL,
+    id_tipo_permiso   INTEGER NOT NULL,
+    rut               VARCHAR2(12) NOT NULL
+);
+
+ALTER TABLE solicitud ADD CONSTRAINT solicitud_pk PRIMARY KEY ( id_solicitud );
+
+CREATE TABLE tipo_permiso (
+    id_tipo_permiso   INTEGER NOT NULL,
+    nombre            VARCHAR2(15) NOT NULL,
+    nro_dias          INTEGER NOT NULL
+);
+
+ALTER TABLE tipo_permiso ADD CONSTRAINT tipo_permiso_pk PRIMARY KEY ( id_tipo_permiso );
+
+CREATE TABLE unidad_interna (
+    id_unidad   INTEGER NOT NULL,
+    nombre      VARCHAR2(15) NOT NULL
+);
+
+ALTER TABLE unidad_interna ADD CONSTRAINT unidad_interna_pk PRIMARY KEY ( id_unidad );
+
+ALTER TABLE dias_funcionario
+    ADD CONSTRAINT dias_funcionario_fk FOREIGN KEY ( rut )
+        REFERENCES funcionario ( rut );
+
+ALTER TABLE dias_funcionario
+    ADD CONSTRAINT dias_tipo_permiso_fk FOREIGN KEY ( id_tipo_permiso )
+        REFERENCES tipo_permiso ( id_tipo_permiso );
+
+ALTER TABLE funcionario
+    ADD CONSTRAINT funcionario_rol_fk FOREIGN KEY ( id_rol )
+        REFERENCES rol ( id_rol );
+
+ALTER TABLE funcionario
+    ADD CONSTRAINT funcionario_unidad_interna_fk FOREIGN KEY ( id_unidad )
+        REFERENCES unidad_interna ( id_unidad );
+
+ALTER TABLE permiso
+    ADD CONSTRAINT permiso_solicitud_fk FOREIGN KEY ( id_solicitud )
+        REFERENCES solicitud ( id_solicitud );
+
+ALTER TABLE resolucion
+    ADD CONSTRAINT resolucion_funcionario_fk FOREIGN KEY ( rut )
+        REFERENCES funcionario ( rut );
+
+ALTER TABLE resolucion
+    ADD CONSTRAINT resolucion_permiso_fk FOREIGN KEY ( id_permiso )
+        REFERENCES permiso ( id_permiso );
+
+ALTER TABLE solicitud
+    ADD CONSTRAINT solicitud_funcionario_fk FOREIGN KEY ( rut )
+        REFERENCES funcionario ( rut );
+
+ALTER TABLE solicitud
+    ADD CONSTRAINT solicitud_tipo_permiso_fk FOREIGN KEY ( id_tipo_permiso )
+        REFERENCES tipo_permiso ( id_tipo_permiso );
+
