@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MuniEntities">
+    <EntitySetMapping Name="DIAS_FUNCIONARIO">
+      <EntityTypeMapping TypeName="Model.DIAS_FUNCIONARIO">
+        <MappingFragment StoreEntitySet="DIAS_FUNCIONARIO">
+          <ScalarProperty Name="ID_DIAS" ColumnName="ID_DIAS" />
+          <ScalarProperty Name="DIAS_HABILES_DISPONIBLES" ColumnName="DIAS_HABILES_DISPONIBLES" />
+          <ScalarProperty Name="ID_TIPO_PERMISO" ColumnName="ID_TIPO_PERMISO" />
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FUNCIONARIO">
+      <EntityTypeMapping TypeName="Model.FUNCIONARIO">
+        <MappingFragment StoreEntitySet="FUNCIONARIO">
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+          <ScalarProperty Name="PASS" ColumnName="PASS" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="APELLIDOP" ColumnName="APELLIDOP" />
+          <ScalarProperty Name="APELLIDOM" ColumnName="APELLIDOM" />
+          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
+          <ScalarProperty Name="FECHA_CONTRATO" ColumnName="FECHA_CONTRATO" />
+          <ScalarProperty Name="MOROSO" ColumnName="MOROSO" />
+          <ScalarProperty Name="ID_UNIDAD" ColumnName="ID_UNIDAD" />
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PERMISO">
+      <EntityTypeMapping TypeName="Model.PERMISO">
+        <MappingFragment StoreEntitySet="PERMISO">
+          <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
+          <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
+          <ScalarProperty Name="CANTIDAD_DIAS" ColumnName="CANTIDAD_DIAS" />
+          <ScalarProperty Name="PENDIENTE" ColumnName="PENDIENTE" />
+          <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />
+          <ScalarProperty Name="COD_VERIFICACION" ColumnName="COD_VERIFICACION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RESOLUCION">
+      <EntityTypeMapping TypeName="Model.RESOLUCION">
+        <MappingFragment StoreEntitySet="RESOLUCION">
+          <ScalarProperty Name="ID_RESOLUCION" ColumnName="ID_RESOLUCION" />
+          <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
+          <ScalarProperty Name="CORRELATIVO" ColumnName="CORRELATIVO" />
+          <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ROL">
+      <EntityTypeMapping TypeName="Model.ROL">
+        <MappingFragment StoreEntitySet="ROL">
+          <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SOLICITUD">
+      <EntityTypeMapping TypeName="Model.SOLICITUD">
+        <MappingFragment StoreEntitySet="SOLICITUD">
+          <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />
+          <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
+          <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
+          <ScalarProperty Name="ID_TIPO_PERMISO" ColumnName="ID_TIPO_PERMISO" />
+          <ScalarProperty Name="RUT" ColumnName="RUT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIPO_PERMISO">
+      <EntityTypeMapping TypeName="Model.TIPO_PERMISO">
+        <MappingFragment StoreEntitySet="TIPO_PERMISO">
+          <ScalarProperty Name="ID_TIPO_PERMISO" ColumnName="ID_TIPO_PERMISO" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+          <ScalarProperty Name="NRO_DIAS" ColumnName="NRO_DIAS" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UNIDAD_INTERNA">
+      <EntityTypeMapping TypeName="Model.UNIDAD_INTERNA">
+        <MappingFragment StoreEntitySet="UNIDAD_INTERNA">
+          <ScalarProperty Name="ID_UNIDAD" ColumnName="ID_UNIDAD" />
+          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

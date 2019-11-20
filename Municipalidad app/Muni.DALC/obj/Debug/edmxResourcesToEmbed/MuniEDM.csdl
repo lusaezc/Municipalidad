@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="DIAS_FUNCIONARIO">
+    <Key>
+      <PropertyRef Name="ID_DIAS" />
+    </Key>
+    <Property Name="ID_DIAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DIAS_HABILES_DISPONIBLES" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_TIPO_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FUNCIONARIO" Relationship="Self.DIAS_FUNCIONARIO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="FUNCIONARIO" />
+    <NavigationProperty Name="TIPO_PERMISO" Relationship="Self.DIAS_TIPO_PERMISO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="TIPO_PERMISO" />
+  </EntityType>
+  <EntityType Name="FUNCIONARIO">
+    <Key>
+      <PropertyRef Name="RUT" />
+    </Key>
+    <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASS" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDOP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="APELLIDOM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FECHA_CONTRATO" Type="DateTime" Nullable="false" />
+    <Property Name="MOROSO" Type="Decimal" Nullable="false" />
+    <Property Name="ID_UNIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_FUNCIONARIO_FK" FromRole="FUNCIONARIO" ToRole="DIAS_FUNCIONARIO" />
+    <NavigationProperty Name="ROL" Relationship="Self.FUNCIONARIO_ROL_FK" FromRole="FUNCIONARIO" ToRole="ROL" />
+    <NavigationProperty Name="UNIDAD_INTERNA" Relationship="Self.FUNCIONARIO_UNIDAD_INTERNA_FK" FromRole="FUNCIONARIO" ToRole="UNIDAD_INTERNA" />
+    <NavigationProperty Name="RESOLUCION" Relationship="Self.RESOLUCION_FUNCIONARIO_FK" FromRole="FUNCIONARIO" ToRole="RESOLUCION" />
+    <NavigationProperty Name="SOLICITUD" Relationship="Self.SOLICITUD_FUNCIONARIO_FK" FromRole="FUNCIONARIO" ToRole="SOLICITUD" />
+  </EntityType>
+  <EntityType Name="PERMISO">
+    <Key>
+      <PropertyRef Name="ID_PERMISO" />
+    </Key>
+    <Property Name="ID_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ESTADO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="OBSERVACIONES" Type="String" MaxLength="2000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CANTIDAD_DIAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="PENDIENTE" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_SOLICITUD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="COD_VERIFICACION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="SOLICITUD" Relationship="Self.PERMISO_SOLICITUD_FK" FromRole="PERMISO" ToRole="SOLICITUD" />
+    <NavigationProperty Name="RESOLUCION" Relationship="Self.RESOLUCION_PERMISO_FK" FromRole="PERMISO" ToRole="RESOLUCION" />
+  </EntityType>
+  <EntityType Name="RESOLUCION">
+    <Key>
+      <PropertyRef Name="ID_RESOLUCION" />
+    </Key>
+    <Property Name="ID_RESOLUCION" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DETALLE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CORRELATIVO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="ID_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FUNCIONARIO" Relationship="Self.RESOLUCION_FUNCIONARIO_FK" FromRole="RESOLUCION" ToRole="FUNCIONARIO" />
+    <NavigationProperty Name="PERMISO" Relationship="Self.RESOLUCION_PERMISO_FK" FromRole="RESOLUCION" ToRole="PERMISO" />
+  </EntityType>
+  <EntityType Name="ROL">
+    <Key>
+      <PropertyRef Name="ID_ROL" />
+    </Key>
+    <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FUNCIONARIO" Relationship="Self.FUNCIONARIO_ROL_FK" FromRole="ROL" ToRole="FUNCIONARIO" />
+  </EntityType>
+  <EntityType Name="SOLICITUD">
+    <Key>
+      <PropertyRef Name="ID_SOLICITUD" />
+    </Key>
+    <Property Name="ID_SOLICITUD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="FECHA_INICIO" Type="DateTime" Nullable="false" />
+    <Property Name="FECHA_FIN" Type="DateTime" Nullable="false" />
+    <Property Name="ID_TIPO_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FUNCIONARIO" Relationship="Self.SOLICITUD_FUNCIONARIO_FK" FromRole="SOLICITUD" ToRole="FUNCIONARIO" />
+    <NavigationProperty Name="PERMISO" Relationship="Self.PERMISO_SOLICITUD_FK" FromRole="SOLICITUD" ToRole="PERMISO" />
+    <NavigationProperty Name="TIPO_PERMISO" Relationship="Self.SOLICITUD_TIPO_PERMISO_FK" FromRole="SOLICITUD" ToRole="TIPO_PERMISO" />
+  </EntityType>
+  <EntityType Name="TIPO_PERMISO">
+    <Key>
+      <PropertyRef Name="ID_TIPO_PERMISO" />
+    </Key>
+    <Property Name="ID_TIPO_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NRO_DIAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="DIAS_FUNCIONARIO" />
+    <NavigationProperty Name="SOLICITUD" Relationship="Self.SOLICITUD_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="SOLICITUD" />
+  </EntityType>
+  <EntityType Name="UNIDAD_INTERNA">
+    <Key>
+      <PropertyRef Name="ID_UNIDAD" />
+    </Key>
+    <Property Name="ID_UNIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="FUNCIONARIO" Relationship="Self.FUNCIONARIO_UNIDAD_INTERNA_FK" FromRole="UNIDAD_INTERNA" ToRole="FUNCIONARIO" />
+  </EntityType>
+  <Association Name="DIAS_FUNCIONARIO_FK">
+    <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="1" />
+    <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONARIO">
+        <PropertyRef Name="RUT" />
+      </Principal>
+      <Dependent Role="DIAS_FUNCIONARIO">
+        <PropertyRef Name="RUT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="DIAS_TIPO_PERMISO_FK">
+    <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
+    <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PERMISO">
+        <PropertyRef Name="ID_TIPO_PERMISO" />
+      </Principal>
+      <Dependent Role="DIAS_FUNCIONARIO">
+        <PropertyRef Name="ID_TIPO_PERMISO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FUNCIONARIO_ROL_FK">
+    <End Role="ROL" Type="Self.ROL" Multiplicity="1" />
+    <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ROL">
+        <PropertyRef Name="ID_ROL" />
+      </Principal>
+      <Dependent Role="FUNCIONARIO">
+        <PropertyRef Name="ID_ROL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FUNCIONARIO_UNIDAD_INTERNA_FK">
+    <End Role="UNIDAD_INTERNA" Type="Self.UNIDAD_INTERNA" Multiplicity="1" />
+    <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UNIDAD_INTERNA">
+        <PropertyRef Name="ID_UNIDAD" />
+      </Principal>
+      <Dependent Role="FUNCIONARIO">
+        <PropertyRef Name="ID_UNIDAD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RESOLUCION_FUNCIONARIO_FK">
+    <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="1" />
+    <End Role="RESOLUCION" Type="Self.RESOLUCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONARIO">
+        <PropertyRef Name="RUT" />
+      </Principal>
+      <Dependent Role="RESOLUCION">
+        <PropertyRef Name="RUT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_FUNCIONARIO_FK">
+    <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="1" />
+    <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FUNCIONARIO">
+        <PropertyRef Name="RUT" />
+      </Principal>
+      <Dependent Role="SOLICITUD">
+        <PropertyRef Name="RUT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PERMISO_SOLICITUD_FK">
+    <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="1" />
+    <End Role="PERMISO" Type="Self.PERMISO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOLICITUD">
+        <PropertyRef Name="ID_SOLICITUD" />
+      </Principal>
+      <Dependent Role="PERMISO">
+        <PropertyRef Name="ID_SOLICITUD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="RESOLUCION_PERMISO_FK">
+    <End Role="PERMISO" Type="Self.PERMISO" Multiplicity="1" />
+    <End Role="RESOLUCION" Type="Self.RESOLUCION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PERMISO">
+        <PropertyRef Name="ID_PERMISO" />
+      </Principal>
+      <Dependent Role="RESOLUCION">
+        <PropertyRef Name="ID_PERMISO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SOLICITUD_TIPO_PERMISO_FK">
+    <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
+    <End Role="SOLICITUD" Type="Self.SOLICITUD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PERMISO">
+        <PropertyRef Name="ID_TIPO_PERMISO" />
+      </Principal>
+      <Dependent Role="SOLICITUD">
+        <PropertyRef Name="ID_TIPO_PERMISO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="MuniEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="DIAS_FUNCIONARIO" EntityType="Self.DIAS_FUNCIONARIO" />
+    <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" />
+    <EntitySet Name="PERMISO" EntityType="Self.PERMISO" />
+    <EntitySet Name="RESOLUCION" EntityType="Self.RESOLUCION" />
+    <EntitySet Name="ROL" EntityType="Self.ROL" />
+    <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" />
+    <EntitySet Name="TIPO_PERMISO" EntityType="Self.TIPO_PERMISO" />
+    <EntitySet Name="UNIDAD_INTERNA" EntityType="Self.UNIDAD_INTERNA" />
+    <AssociationSet Name="DIAS_FUNCIONARIO_FK" Association="Self.DIAS_FUNCIONARIO_FK">
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+      <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
+    </AssociationSet>
+    <AssociationSet Name="DIAS_TIPO_PERMISO_FK" Association="Self.DIAS_TIPO_PERMISO_FK">
+      <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
+      <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FUNCIONARIO_ROL_FK" Association="Self.FUNCIONARIO_ROL_FK">
+      <End Role="ROL" EntitySet="ROL" />
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FUNCIONARIO_UNIDAD_INTERNA_FK" Association="Self.FUNCIONARIO_UNIDAD_INTERNA_FK">
+      <End Role="UNIDAD_INTERNA" EntitySet="UNIDAD_INTERNA" />
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+    </AssociationSet>
+    <AssociationSet Name="RESOLUCION_FUNCIONARIO_FK" Association="Self.RESOLUCION_FUNCIONARIO_FK">
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+      <End Role="RESOLUCION" EntitySet="RESOLUCION" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_FUNCIONARIO_FK" Association="Self.SOLICITUD_FUNCIONARIO_FK">
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+      <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+    </AssociationSet>
+    <AssociationSet Name="PERMISO_SOLICITUD_FK" Association="Self.PERMISO_SOLICITUD_FK">
+      <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+      <End Role="PERMISO" EntitySet="PERMISO" />
+    </AssociationSet>
+    <AssociationSet Name="RESOLUCION_PERMISO_FK" Association="Self.RESOLUCION_PERMISO_FK">
+      <End Role="PERMISO" EntitySet="PERMISO" />
+      <End Role="RESOLUCION" EntitySet="RESOLUCION" />
+    </AssociationSet>
+    <AssociationSet Name="SOLICITUD_TIPO_PERMISO_FK" Association="Self.SOLICITUD_TIPO_PERMISO_FK">
+      <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
+      <End Role="SOLICITUD" EntitySet="SOLICITUD" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,82 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="Muni.Web.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
+
+    <link href="css/style-luchito.css" rel="stylesheet" />
+    <link href="Content/bootstrap.min.css" rel="stylesheet" />
+
+    <script src="Scripts/popper.min.js"></script>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/simple-sidebar.css" rel="stylesheet">
+
+    <!-- jQuery CDN - Slim version (=without AJAX) -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+
+    <!-- Popper.JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+
+    <!-- jQuery Data Tables CDN -->
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js" type="text/javascript" charset="utf8"></script>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="d-flex" id="wrapper" style="background-color: #e1e1e1;">
+
+            <!-- Sidebar -->
+            <div class="bg-light border-right" id="sidebar-wrapper">
+                <div class="sidebar-heading">Panel </div>
+                <div class="list-group list-group-flush">
+                    <a href="Inicio.aspx" class="list-group-item list-group-item-action bg-light">Inicio</a>
+                    <a href="GenerarSolicitud.aspx" class="list-group-item list-group-item-action bg-light">Generar Solicitud</a>
+                    <a href="MostrarSolicitud.aspx" class="list-group-item list-group-item-action bg-light">Ver Solicitud</a>
+                    <a href="MostrarPermisos.aspx" class="list-group-item list-group-item-action bg-light">Ver Permisos</a>
+                    <a href="MaestroResolucion.aspx" class="list-group-item list-group-item-action bg-light">Generar Resolucion</a>
+                    <a href="AutorizarPermiso.aspx" class="list-group-item list-group-item-action bg-light">Autorizar Permiso</a>
+                    <a href="MaestroPres.aspx" class="list-group-item list-group-item-action bg-light">Ver Resoluciones</a>
+                    <a href="Login.aspx" class="list-group-item list-group-item-action bg-light">Cerrar Sesión </a>
+                    <a href="FuncionariosUni.aspx" class="list-group-item list-group-item-action bg-light">Unidad</a>
+                </div>
+            </div>
+            <!-- /#sidebar-wrapper -->
+
+            <!-- Page Content -->
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                <asp:Panel ID="Panel1" runat="server">
+                </asp:Panel>
+            </asp:ContentPlaceHolder>
+        </div>
+
+
+        <!-- Menu Toggle Script -->
+        <script>
+            $("#menu-toggle").click(function (e) {
+                e.preventDefault();
+                $("#wrapper").toggleClass("toggled");
+            });
+        </script>
+
+
+    </form>
+</body>
+</html>
+

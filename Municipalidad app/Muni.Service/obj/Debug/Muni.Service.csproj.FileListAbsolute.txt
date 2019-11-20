@@ -1,0 +1,32 @@
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.Service.dll.config
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.Service.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.Service.pdb
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.Negocio.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.DALC.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\EntityFramework.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.Negocio.pdb
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.Negocio.dll.config
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.DALC.pdb
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\Muni.DALC.dll.config
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\bin\EntityFramework.xml
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\obj\Debug\Muni.Service.csprojAssemblyReference.cache
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\obj\Debug\Muni.Service.csproj.CoreCompileInputs.cache
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\obj\Debug\Muni.Service.csproj.CopyComplete
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\obj\Debug\Muni.Service.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.Service\obj\Debug\Muni.Service.pdb
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.Service.dll.config
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.Service.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.Service.pdb
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.Negocio.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.DALC.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\EntityFramework.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.Negocio.pdb
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.Negocio.dll.config
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.DALC.pdb
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\Muni.DALC.dll.config
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\bin\EntityFramework.xml
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\obj\Debug\Muni.Service.csprojAssemblyReference.cache
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\obj\Debug\Muni.Service.csproj.CoreCompileInputs.cache
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\obj\Debug\Muni.Service.csproj.CopyComplete
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\obj\Debug\Muni.Service.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Service\obj\Debug\Muni.Service.pdb

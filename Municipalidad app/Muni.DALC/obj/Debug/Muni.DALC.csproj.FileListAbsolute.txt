@@ -1,0 +1,19 @@
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\bin\Debug\Muni.DALC.dll.config
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\bin\Debug\Muni.DALC.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\bin\Debug\Muni.DALC.pdb
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\bin\Debug\EntityFramework.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\bin\Debug\EntityFramework.xml
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.csproj.CoreCompileInputs.cache
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.csproj.CopyComplete
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.dll
+C:\Users\Luchito\Documents\portafoleichon\Ingenieria\Aplicación\Finaleichon 06 10\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.pdb
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\bin\Debug\Muni.DALC.dll.config
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\bin\Debug\Muni.DALC.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\bin\Debug\Muni.DALC.pdb
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\bin\Debug\EntityFramework.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\bin\Debug\EntityFramework.xml
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.csproj.CoreCompileInputs.cache
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.csproj.CopyComplete
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.dll
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.pdb
+C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.DALC\obj\Debug\Muni.DALC.csprojAssemblyReference.cache
