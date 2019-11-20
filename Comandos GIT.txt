@@ -1,0 +1,12 @@
+git clone "direccion de carpeta" (crear carpeta comaprtida GITHUB)
+----------------------------
+git config --global user.email "Nic.palmag@alumnos.duoc.cl"
+----------------------------
+git config --global user.name "Nicolas Palma"
+
+git add . (para añadir todos los datos de la carpeta)
+git commit -m "mensaje descriptivo de los cambios realizados"
+git push (agregar y comparar cambios)
+git checkout (Actualizar directorio)
+git log (historial de cambios)
+git status (comprobar estado del repositorio)
