@@ -67,7 +67,6 @@
     </div>
 
     <!-- jQuery, Popper.js, Bootstrap JS -->
-    <script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
     <script src="DataTable/popper/popper.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
     <!-- puede estar malo******** -->

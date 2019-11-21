@@ -18,10 +18,15 @@ namespace Muni.Web
         List<TipoPermiso> PermisosColl = new TipoPermisoCollection().ReadAll().ToList();
         public List<DiasFuncionario> ld;
 
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
-            CargarDll();
-
+            if (!IsPostBack)
+            {
+                CargarDll();
+                // lblTitulo.Text = string.Format("Haz tu solicitud en tu unidad interna", U1.TipoUnidad);
+            }
         }
 
         private void CargarDll()
@@ -39,25 +44,20 @@ namespace Muni.Web
             int CantidadDias = PermisosColl.Where(p => p.IdTipoPermiso == ddlCategoria.SelectedIndex).First().NumeroDias;
         }
 
-
         protected void Calendar1_SelectionChanged(object sender, EventArgs e)
         {
-
-
-            //lblCalendar.Text = string.Format("Ingrese la fecha limite");
-            //Calendar2.Visible = true;
-            //limite = Calendar1.SelectedDate;
+            lblCalendar.Text = string.Format("Ingrese la fecha limite");
+            Calendar2.Visible = true;
+            limite = Calendar1.SelectedDate;
         }
 
         protected void Button1_Click(object sender, EventArgs e)
         {
 
-
             List<Solicitud> ls = new SolicitudCollection().ReadAll().ToList();
             Solicitud s1 = new Solicitud();
 
             int CantidadDias = PermisosColl.Where(p => p.IdTipoPermiso == ddlCategoria.SelectedIndex).First().NumeroDias;
-
 
             if (ls.Count() == 0)
             {
@@ -68,12 +68,9 @@ namespace Muni.Web
                 s1.IdSolicitud = ls.Max(s => s.IdSolicitud) + 1;
             }
 
-
-            //s1.FechaInicio = Calendar;
-            //s1.FechaFin = Calendar2.SelectedDate;
-            //s1.Rut = U1.Rut;
-
-
+            s1.FechaInicio = Calendar1.SelectedDate;
+            s1.FechaFin = Calendar2.SelectedDate;
+            s1.Rut = U1.Rut;
 
             DiasFuncionario st = new DiasFuncionario();
 
@@ -83,27 +80,21 @@ namespace Muni.Web
             //st.Update();
             // }
 
-
             s1.IdTipoPermiso = ddlCategoria.SelectedIndex;
 
-            //if (s1.Create())
-            //{
-            //    MsgBox("Solicitud Generada", this.Page, this);
-            //}
-            //else
-            //{
-            //    MsgBox("Error", this.Page, this);
-            //}
-
-
-
+            if (s1.Create())
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
+            }
+            else
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
+            }
         }
 
         protected void Calendar2_SelectionChanged(object sender, EventArgs e)
         {
-
-
-            //Button1.Visible = true;
+            Button1.Visible = true;
         }
         protected void RenderDays1(object sender, DayRenderEventArgs e)
         {
@@ -118,32 +109,26 @@ namespace Muni.Web
                 e.Day.IsSelectable = false;
                 e.Cell.BackColor = System.Drawing.Color.LightGray;
                 e.Cell.Enabled = false;
-
             }
-
-
-
-
         }
+
         protected void RenderDays2(object sender, DayRenderEventArgs e)
         {
-            //RadCalen
 
-            //if (e.Day.Date == Calendar1.)
-            //{
-            //    e.Cell.Controls.Add(new LiteralControl("<p style=\"color:green;\">Inicio</p>"));
-            //}
-
+            if (e.Day.Date == Calendar1.SelectedDate)
+            {
+                e.Cell.Controls.Add(new LiteralControl("<p style=\"color:green;\">Inicio</p>"));
+            }
 
             CantidadDias = PermisosColl.Where(p => p.IdTipoPermiso == ddlCategoria.SelectedIndex).First().NumeroDias;
 
-            //if (e.Day.Date < DateTime.Now.Date || e.Day.IsWeekend || e.Day.IsOtherMonth || e.Day.Date < Calendar1.SelectedDate)
-            //{
-            //    e.Day.IsSelectable = false;
-            //    e.Cell.BackColor = System.Drawing.Color.LightGray;
-            //    e.Cell.Enabled = false;
+            if (e.Day.Date < DateTime.Now.Date || e.Day.IsWeekend || e.Day.IsOtherMonth || e.Day.Date < Calendar1.SelectedDate)
+            {
+                e.Day.IsSelectable = false;
+                e.Cell.BackColor = System.Drawing.Color.LightGray;
+                e.Cell.Enabled = false;
 
-            //}
+            }
 
             if (ddlCategoria.SelectedIndex == 0 || ddlCategoria.SelectedIndex == 1)
             {
@@ -163,7 +148,6 @@ namespace Muni.Web
                     e.Cell.BackColor = System.Drawing.Color.LightGray;
                     e.Cell.Enabled = false;
                 }
-
             }
         }
     }

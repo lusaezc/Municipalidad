@@ -3,22 +3,14 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
     <div class="container">
         <div class="card card-luchito">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
-                        <h3>Tipo de permiso :&nbsp;&nbsp;
-        <asp:DropDownList ID="ddlCategoria" runat="server" Width="199px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
-            <asp:ListItem></asp:ListItem>
-        </asp:DropDownList>
-                        <p>
-                            &nbsp;
-                        </p>
-                        <p>
-                            &nbsp;
-                        </p>
+                        Tipo de permiso :
+                         <asp:DropDownList ID="ddlCategoria" runat="server" Width="199px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true"></asp:DropDownList>
                         <asp:Calendar ID="Calendar1" runat="server" OnDayRender="RenderDays1" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" OnSelectionChanged="Calendar1_SelectionChanged" Visible="False" Width="350px">
                             <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
                             <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
