@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MuniModel.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="11.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="DIAS_FUNCIONARIO">
           <Key>
             <PropertyRef Name="ID_DIAS" />
@@ -19,7 +19,7 @@
             <PropertyRef Name="RUT" />
           </Key>
           <Property Name="RUT" Type="varchar2" MaxLength="12" Nullable="false" />
-          <Property Name="PASS" Type="varchar2" MaxLength="35" Nullable="false" />
+          <Property Name="PASS" Type="varchar2" MaxLength="250" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="40" Nullable="false" />
           <Property Name="APELLIDOP" Type="varchar2" MaxLength="15" Nullable="false" />
           <Property Name="APELLIDOM" Type="varchar2" MaxLength="15" Nullable="false" />
@@ -73,7 +73,7 @@
             <PropertyRef Name="ID_TIPO_PERMISO" />
           </Key>
           <Property Name="ID_TIPO_PERMISO" Type="number" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="varchar2" MaxLength="15" Nullable="false" />
+          <Property Name="NOMBRE" Type="varchar2" MaxLength="100" Nullable="false" />
           <Property Name="NRO_DIAS" Type="number" Precision="38" Scale="0" Nullable="false" />
         </EntityType>
         <EntityType Name="UNIDAD_INTERNA">
@@ -83,6 +83,18 @@
           <Property Name="ID_UNIDAD" Type="number" Precision="38" Scale="0" Nullable="false" />
           <Property Name="NOMBRE" Type="varchar2" MaxLength="15" Nullable="false" />
         </EntityType>
+        <Association Name="DIAS_FUN_TIPO_PERMISO_FK">
+          <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
+          <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PERMISO">
+              <PropertyRef Name="ID_TIPO_PERMISO" />
+            </Principal>
+            <Dependent Role="DIAS_FUNCIONARIO">
+              <PropertyRef Name="ID_TIPO_PERMISO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="DIAS_FUNCIONARIO_FK">
           <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="1" />
           <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
@@ -92,18 +104,6 @@
             </Principal>
             <Dependent Role="DIAS_FUNCIONARIO">
               <PropertyRef Name="RUT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DIAS_TIPO_PERMISO_FK">
-          <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
-          <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_PERMISO">
-              <PropertyRef Name="ID_TIPO_PERMISO" />
-            </Principal>
-            <Dependent Role="DIAS_FUNCIONARIO">
-              <PropertyRef Name="ID_TIPO_PERMISO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -191,7 +191,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="ModelStoreContainer">
+        <EntityContainer Name="MuniModelStoreContainer">
           <EntitySet Name="DIAS_FUNCIONARIO" EntityType="Self.DIAS_FUNCIONARIO" Schema="MUNI" store:Type="Tables" />
           <EntitySet Name="FUNCIONARIO" EntityType="Self.FUNCIONARIO" Schema="MUNI" store:Type="Tables" />
           <EntitySet Name="PERMISO" EntityType="Self.PERMISO" Schema="MUNI" store:Type="Tables" />
@@ -200,12 +200,12 @@
           <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" Schema="MUNI" store:Type="Tables" />
           <EntitySet Name="TIPO_PERMISO" EntityType="Self.TIPO_PERMISO" Schema="MUNI" store:Type="Tables" />
           <EntitySet Name="UNIDAD_INTERNA" EntityType="Self.UNIDAD_INTERNA" Schema="MUNI" store:Type="Tables" />
-          <AssociationSet Name="DIAS_FUNCIONARIO_FK" Association="Self.DIAS_FUNCIONARIO_FK">
-            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          <AssociationSet Name="DIAS_FUN_TIPO_PERMISO_FK" Association="Self.DIAS_FUN_TIPO_PERMISO_FK">
+            <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
             <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
           </AssociationSet>
-          <AssociationSet Name="DIAS_TIPO_PERMISO_FK" Association="Self.DIAS_TIPO_PERMISO_FK">
-            <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
+          <AssociationSet Name="DIAS_FUNCIONARIO_FK" Association="Self.DIAS_FUNCIONARIO_FK">
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
             <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
           </AssociationSet>
           <AssociationSet Name="FUNCIONARIO_ROL_FK" Association="Self.FUNCIONARIO_ROL_FK">
@@ -237,10 +237,11 @@
             <End Role="SOLICITUD" EntitySet="SOLICITUD" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MuniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="DIAS_FUNCIONARIO">
           <Key>
             <PropertyRef Name="ID_DIAS" />
@@ -249,21 +250,21 @@
           <Property Name="DIAS_HABILES_DISPONIBLES" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_TIPO_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="TIPO_PERMISO" Relationship="Self.DIAS_FUN_TIPO_PERMISO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="TIPO_PERMISO" />
           <NavigationProperty Name="FUNCIONARIO" Relationship="Self.DIAS_FUNCIONARIO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="FUNCIONARIO" />
-          <NavigationProperty Name="TIPO_PERMISO" Relationship="Self.DIAS_TIPO_PERMISO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="TIPO_PERMISO" />
         </EntityType>
         <EntityType Name="FUNCIONARIO">
           <Key>
             <PropertyRef Name="RUT" />
           </Key>
           <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="PASS" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PASS" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="APELLIDOP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="APELLIDOM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="FECHA_CONTRATO" Type="DateTime" Nullable="false" />
-          <Property Name="MOROSO" Type="Decimal" Nullable="false" />
+          <Property Name="MOROSO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_UNIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
           <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_FUNCIONARIO_FK" FromRole="FUNCIONARIO" ToRole="DIAS_FUNCIONARIO" />
@@ -324,9 +325,9 @@
             <PropertyRef Name="ID_TIPO_PERMISO" />
           </Key>
           <Property Name="ID_TIPO_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <Property Name="NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="NRO_DIAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-          <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="DIAS_FUNCIONARIO" />
+          <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_FUN_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="DIAS_FUNCIONARIO" />
           <NavigationProperty Name="SOLICITUD" Relationship="Self.SOLICITUD_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="SOLICITUD" />
         </EntityType>
         <EntityType Name="UNIDAD_INTERNA">
@@ -337,6 +338,18 @@
           <Property Name="NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="FUNCIONARIO" Relationship="Self.FUNCIONARIO_UNIDAD_INTERNA_FK" FromRole="UNIDAD_INTERNA" ToRole="FUNCIONARIO" />
         </EntityType>
+        <Association Name="DIAS_FUN_TIPO_PERMISO_FK">
+          <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
+          <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPO_PERMISO">
+              <PropertyRef Name="ID_TIPO_PERMISO" />
+            </Principal>
+            <Dependent Role="DIAS_FUNCIONARIO">
+              <PropertyRef Name="ID_TIPO_PERMISO" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="DIAS_FUNCIONARIO_FK">
           <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="1" />
           <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
@@ -346,18 +359,6 @@
             </Principal>
             <Dependent Role="DIAS_FUNCIONARIO">
               <PropertyRef Name="RUT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="DIAS_TIPO_PERMISO_FK">
-          <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
-          <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TIPO_PERMISO">
-              <PropertyRef Name="ID_TIPO_PERMISO" />
-            </Principal>
-            <Dependent Role="DIAS_FUNCIONARIO">
-              <PropertyRef Name="ID_TIPO_PERMISO" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -454,12 +455,12 @@
           <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" />
           <EntitySet Name="TIPO_PERMISO" EntityType="Self.TIPO_PERMISO" />
           <EntitySet Name="UNIDAD_INTERNA" EntityType="Self.UNIDAD_INTERNA" />
-          <AssociationSet Name="DIAS_FUNCIONARIO_FK" Association="Self.DIAS_FUNCIONARIO_FK">
-            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+          <AssociationSet Name="DIAS_FUN_TIPO_PERMISO_FK" Association="Self.DIAS_FUN_TIPO_PERMISO_FK">
+            <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
             <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
           </AssociationSet>
-          <AssociationSet Name="DIAS_TIPO_PERMISO_FK" Association="Self.DIAS_TIPO_PERMISO_FK">
-            <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
+          <AssociationSet Name="DIAS_FUNCIONARIO_FK" Association="Self.DIAS_FUNCIONARIO_FK">
+            <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
             <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
           </AssociationSet>
           <AssociationSet Name="FUNCIONARIO_ROL_FK" Association="Self.FUNCIONARIO_ROL_FK">
@@ -496,9 +497,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="MuniEntities">
+        <EntityContainerMapping StorageEntityContainer="MuniModelStoreContainer" CdmEntityContainer="MuniEntities">
           <EntitySetMapping Name="DIAS_FUNCIONARIO">
-            <EntityTypeMapping TypeName="Model.DIAS_FUNCIONARIO">
+            <EntityTypeMapping TypeName="MuniModel.DIAS_FUNCIONARIO">
               <MappingFragment StoreEntitySet="DIAS_FUNCIONARIO">
                 <ScalarProperty Name="ID_DIAS" ColumnName="ID_DIAS" />
                 <ScalarProperty Name="DIAS_HABILES_DISPONIBLES" ColumnName="DIAS_HABILES_DISPONIBLES" />
@@ -508,7 +509,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="FUNCIONARIO">
-            <EntityTypeMapping TypeName="Model.FUNCIONARIO">
+            <EntityTypeMapping TypeName="MuniModel.FUNCIONARIO">
               <MappingFragment StoreEntitySet="FUNCIONARIO">
                 <ScalarProperty Name="RUT" ColumnName="RUT" />
                 <ScalarProperty Name="PASS" ColumnName="PASS" />
@@ -524,7 +525,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PERMISO">
-            <EntityTypeMapping TypeName="Model.PERMISO">
+            <EntityTypeMapping TypeName="MuniModel.PERMISO">
               <MappingFragment StoreEntitySet="PERMISO">
                 <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
                 <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
@@ -537,7 +538,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RESOLUCION">
-            <EntityTypeMapping TypeName="Model.RESOLUCION">
+            <EntityTypeMapping TypeName="MuniModel.RESOLUCION">
               <MappingFragment StoreEntitySet="RESOLUCION">
                 <ScalarProperty Name="ID_RESOLUCION" ColumnName="ID_RESOLUCION" />
                 <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
@@ -548,7 +549,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ROL">
-            <EntityTypeMapping TypeName="Model.ROL">
+            <EntityTypeMapping TypeName="MuniModel.ROL">
               <MappingFragment StoreEntitySet="ROL">
                 <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
                 <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
@@ -556,7 +557,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="SOLICITUD">
-            <EntityTypeMapping TypeName="Model.SOLICITUD">
+            <EntityTypeMapping TypeName="MuniModel.SOLICITUD">
               <MappingFragment StoreEntitySet="SOLICITUD">
                 <ScalarProperty Name="ID_SOLICITUD" ColumnName="ID_SOLICITUD" />
                 <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
@@ -567,7 +568,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TIPO_PERMISO">
-            <EntityTypeMapping TypeName="Model.TIPO_PERMISO">
+            <EntityTypeMapping TypeName="MuniModel.TIPO_PERMISO">
               <MappingFragment StoreEntitySet="TIPO_PERMISO">
                 <ScalarProperty Name="ID_TIPO_PERMISO" ColumnName="ID_TIPO_PERMISO" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
@@ -576,7 +577,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UNIDAD_INTERNA">
-            <EntityTypeMapping TypeName="Model.UNIDAD_INTERNA">
+            <EntityTypeMapping TypeName="MuniModel.UNIDAD_INTERNA">
               <MappingFragment StoreEntitySet="UNIDAD_INTERNA">
                 <ScalarProperty Name="ID_UNIDAD" ColumnName="ID_UNIDAD" />
                 <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />

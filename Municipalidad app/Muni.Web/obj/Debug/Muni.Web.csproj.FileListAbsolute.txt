@@ -329,3 +329,7 @@ C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web
 C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web.dll
 C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web.pdb
 C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web.csprojAssemblyReference.cache
+C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.csprojAssemblyReference.cache
+C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.csproj.CoreCompileInputs.cache
+C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.dll
+C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.pdb

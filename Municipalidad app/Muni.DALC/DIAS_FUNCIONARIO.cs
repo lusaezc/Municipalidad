@@ -19,7 +19,7 @@ namespace Muni.DALC
         public decimal ID_TIPO_PERMISO { get; set; }
         public string RUT { get; set; }
     
-        public virtual FUNCIONARIO FUNCIONARIO { get; set; }
         public virtual TIPO_PERMISO TIPO_PERMISO { get; set; }
+        public virtual FUNCIONARIO FUNCIONARIO { get; set; }
     }
 }
