@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="MuniModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="DIAS_FUNCIONARIO">
     <Key>
       <PropertyRef Name="ID_DIAS" />
@@ -8,21 +8,21 @@
     <Property Name="DIAS_HABILES_DISPONIBLES" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <Property Name="ID_TIPO_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TIPO_PERMISO" Relationship="Self.DIAS_FUN_TIPO_PERMISO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="TIPO_PERMISO" />
     <NavigationProperty Name="FUNCIONARIO" Relationship="Self.DIAS_FUNCIONARIO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="FUNCIONARIO" />
-    <NavigationProperty Name="TIPO_PERMISO" Relationship="Self.DIAS_TIPO_PERMISO_FK" FromRole="DIAS_FUNCIONARIO" ToRole="TIPO_PERMISO" />
   </EntityType>
   <EntityType Name="FUNCIONARIO">
     <Key>
       <PropertyRef Name="RUT" />
     </Key>
     <Property Name="RUT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
-    <Property Name="PASS" Type="String" MaxLength="35" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="PASS" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NOMBRE" Type="String" MaxLength="40" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="APELLIDOP" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="APELLIDOM" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="CORREO" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="FECHA_CONTRATO" Type="DateTime" Nullable="false" />
-    <Property Name="MOROSO" Type="Decimal" Nullable="false" />
+    <Property Name="MOROSO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <Property Name="ID_UNIDAD" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <Property Name="ID_ROL" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
     <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_FUNCIONARIO_FK" FromRole="FUNCIONARIO" ToRole="DIAS_FUNCIONARIO" />
@@ -83,9 +83,9 @@
       <PropertyRef Name="ID_TIPO_PERMISO" />
     </Key>
     <Property Name="ID_TIPO_PERMISO" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-    <Property Name="NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NOMBRE" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="NRO_DIAS" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
-    <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="DIAS_FUNCIONARIO" />
+    <NavigationProperty Name="DIAS_FUNCIONARIO" Relationship="Self.DIAS_FUN_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="DIAS_FUNCIONARIO" />
     <NavigationProperty Name="SOLICITUD" Relationship="Self.SOLICITUD_TIPO_PERMISO_FK" FromRole="TIPO_PERMISO" ToRole="SOLICITUD" />
   </EntityType>
   <EntityType Name="UNIDAD_INTERNA">
@@ -96,6 +96,18 @@
     <Property Name="NOMBRE" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
     <NavigationProperty Name="FUNCIONARIO" Relationship="Self.FUNCIONARIO_UNIDAD_INTERNA_FK" FromRole="UNIDAD_INTERNA" ToRole="FUNCIONARIO" />
   </EntityType>
+  <Association Name="DIAS_FUN_TIPO_PERMISO_FK">
+    <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
+    <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIPO_PERMISO">
+        <PropertyRef Name="ID_TIPO_PERMISO" />
+      </Principal>
+      <Dependent Role="DIAS_FUNCIONARIO">
+        <PropertyRef Name="ID_TIPO_PERMISO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="DIAS_FUNCIONARIO_FK">
     <End Role="FUNCIONARIO" Type="Self.FUNCIONARIO" Multiplicity="1" />
     <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
@@ -105,18 +117,6 @@
       </Principal>
       <Dependent Role="DIAS_FUNCIONARIO">
         <PropertyRef Name="RUT" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="DIAS_TIPO_PERMISO_FK">
-    <End Role="TIPO_PERMISO" Type="Self.TIPO_PERMISO" Multiplicity="1" />
-    <End Role="DIAS_FUNCIONARIO" Type="Self.DIAS_FUNCIONARIO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="TIPO_PERMISO">
-        <PropertyRef Name="ID_TIPO_PERMISO" />
-      </Principal>
-      <Dependent Role="DIAS_FUNCIONARIO">
-        <PropertyRef Name="ID_TIPO_PERMISO" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -213,12 +213,12 @@
     <EntitySet Name="SOLICITUD" EntityType="Self.SOLICITUD" />
     <EntitySet Name="TIPO_PERMISO" EntityType="Self.TIPO_PERMISO" />
     <EntitySet Name="UNIDAD_INTERNA" EntityType="Self.UNIDAD_INTERNA" />
-    <AssociationSet Name="DIAS_FUNCIONARIO_FK" Association="Self.DIAS_FUNCIONARIO_FK">
-      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
+    <AssociationSet Name="DIAS_FUN_TIPO_PERMISO_FK" Association="Self.DIAS_FUN_TIPO_PERMISO_FK">
+      <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
       <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
     </AssociationSet>
-    <AssociationSet Name="DIAS_TIPO_PERMISO_FK" Association="Self.DIAS_TIPO_PERMISO_FK">
-      <End Role="TIPO_PERMISO" EntitySet="TIPO_PERMISO" />
+    <AssociationSet Name="DIAS_FUNCIONARIO_FK" Association="Self.DIAS_FUNCIONARIO_FK">
+      <End Role="FUNCIONARIO" EntitySet="FUNCIONARIO" />
       <End Role="DIAS_FUNCIONARIO" EntitySet="DIAS_FUNCIONARIO" />
     </AssociationSet>
     <AssociationSet Name="FUNCIONARIO_ROL_FK" Association="Self.FUNCIONARIO_ROL_FK">
