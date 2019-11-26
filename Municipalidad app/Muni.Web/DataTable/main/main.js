@@ -1,4 +1,4 @@
-$('#table').DataTable({
+$('#DataTable').DataTable({
     language: {
         "lengthMenu": "Mostrar _MENU_ registros",
         "zeroRecords": "No se encontraron resultados",

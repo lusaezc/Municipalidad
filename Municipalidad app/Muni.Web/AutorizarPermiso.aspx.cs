@@ -53,7 +53,7 @@ namespace Muni.Web
 
 
 
-                p.IdPermiso = ls.Count() + 1;
+                p.IdPermiso = s.IdSolicitud;
                 p.Observaciones = txtObservaciones.Text;
                 p.CantidadDias = s.FechaFin.Day - s.FechaInicio.Day;
                 p.Pendiente = 1;

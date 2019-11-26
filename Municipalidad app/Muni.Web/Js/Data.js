@@ -1,8 +1,11 @@
 ﻿function unidades() {
-    var table = $("#example").DataTable({
-        select: true,
+    var table = $("#DataTable").DataTable({
         destroy: true,
         responsive: true,
+        dom: 'Bfrtip',
+        buttons: [
+            'Crear', 'Actualizar', 'Eliminar'
+        ],
         ajax: {
             method: "POST",
             async: false,
@@ -27,7 +30,7 @@
 
 function verifPermiso() {
 
-    var table = $("#example").DataTable({
+    var table = $("#DataTable").DataTable({
         destroy: true,
         responsive: true,
         ajax: {
@@ -57,7 +60,7 @@ function verifPermiso() {
 
 function dtUsers() {
 
-    var table = $("#example").DataTable({
+    var table = $("#DataTable").DataTable({
         destroy: true,
         responsive: true,
         ajax: {
@@ -88,7 +91,7 @@ function dtUsers() {
 
 function tablep() {
 
-    var table = $("#table").DataTable({
+    var table = $("#DataTable").DataTable({
         destroy: true,
         responsive: true,
         ajax: {

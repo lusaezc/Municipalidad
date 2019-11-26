@@ -68,8 +68,8 @@
                                     <div class="collapse" id="submenu1sub1" aria-expanded="false">
                                         <ul class="flex-column nav pl-4">
                                             <li class="nav-item">
-                                                <a class="nav-link p-1" href="#">
-                                                    <i class="fa fa-fw fa-clock-o"></i>Daily </a>
+                                                <a class="nav-link p-1" href="MantenedorUnidades.aspx">
+                                                    <i class="fa fa-fw fa-clock-o"></i>Mantenedor Unidades </a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link p-1" href="#">
