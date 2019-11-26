@@ -11,12 +11,11 @@ namespace MuniWeb
     public partial class MaestroSolicitud : System.Web.UI.Page
     {
         public Funcionario U1 { get { return (Funcionario)Session["_funcionario"]; } set { Session["_funcionario"] = value; } }
-        public DiasFuncionario F1 { get { return (DiasFuncionario)Session["_diasfuncionario"]; } set { Session["_diasfuncionario"] = value; } }
         DateTime limite;
         int CantidadDias = 0;
 
         List<TipoPermiso> PermisosColl = new TipoPermisoCollection().ReadAll().ToList();
-        public List<DiasFuncionario> ld;
+
 
 
 
@@ -87,8 +86,6 @@ namespace MuniWeb
             s1.Rut = U1.Rut;
 
 
-
-                DiasFuncionario st = new DiasFuncionario();
 
                 //if (ddlCategoria.SelectedIndex == 0 || ddlCategoria.SelectedIndex == 1)
                 //{

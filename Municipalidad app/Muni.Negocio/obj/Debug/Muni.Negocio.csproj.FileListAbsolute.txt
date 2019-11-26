@@ -37,3 +37,16 @@ C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Ne
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.csproj.CopyComplete
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.dll
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.pdb
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\Muni.Negocio.dll.config
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\Muni.Negocio.dll
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\Muni.Negocio.pdb
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\EntityFramework.dll
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\Muni.DALC.dll
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\Muni.DALC.pdb
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\Muni.DALC.dll.config
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\bin\Debug\EntityFramework.xml
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.csprojAssemblyReference.cache
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.csproj.CopyComplete
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.dll
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Negocio\obj\Debug\Muni.Negocio.pdb

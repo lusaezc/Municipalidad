@@ -9,10 +9,41 @@ namespace Muni.Negocio
     public class Solicitud : ICrud
     {
         public int IdSolicitud { get; set; }
+        public int Estado { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaFin { get; set; }
         public string Rut { get; set; }
         public int IdTipoPermiso { get; set; }
+
+
+        private string estadoStr;
+
+        public string EstadoStr
+        {
+            get
+            {
+                if (Estado == 1)
+                {
+                    estadoStr = string.Format("rechazado");
+                }
+                else if (Estado == 2)
+                {
+                    estadoStr = string.Format("firmado");
+                }
+                else if (Estado == 3)
+                {
+                    estadoStr = string.Format("autorizado");
+                }
+                else
+                {
+                    estadoStr = string.Format("solicitado");
+                }
+                return estadoStr;
+            }
+
+            set { estadoStr = value; }
+        }
+
 
         private string fechaInicioStr;
 
@@ -99,6 +130,7 @@ namespace Muni.Negocio
             FechaFin = new DateTime();
             Rut = string.Empty;
             IdTipoPermiso = 0;
+            Estado = 0;
 
         }
 
@@ -108,7 +140,7 @@ namespace Muni.Negocio
             try
             {
                 DALC.SOLICITUD s1 = new DALC.SOLICITUD();
-
+                s1.ESTADO = Estado;
                 s1.ID_SOLICITUD = IdSolicitud;
                 s1.FECHA_INICIO = FechaInicio;
                 s1.FECHA_FIN = FechaFin;
@@ -131,6 +163,7 @@ namespace Muni.Negocio
             {
                 DALC.SOLICITUD s1 = CommonBC.Modelo.SOLICITUD.First(s => s.ID_SOLICITUD == IdSolicitud);
 
+                Estado = (int)s1.ESTADO;
                 FechaInicio = s1.FECHA_INICIO;
                 FechaFin = s1.FECHA_FIN;
                 Rut = s1.RUT;
@@ -145,7 +178,17 @@ namespace Muni.Negocio
 
         public bool Update()
         {
-                throw new NotImplementedException();
+            try
+            {
+                DALC.SOLICITUD s1 = CommonBC.Modelo.SOLICITUD.First(s => s.ID_SOLICITUD == IdSolicitud);
+                s1.ESTADO = Estado;
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Delete()

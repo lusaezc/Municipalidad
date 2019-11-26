@@ -3,6 +3,29 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+        <script> function alertarme() {
+                let timerInterval
+                Swal.fire({
+                    type: 'success',
+                    title: 'Permiso concluido exitosamente!',
+                    html: 'Seras redirigido en <b></b> Milisegundos.',
+                    timer: 5000,
+                    timerProgressBar: true,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            Swal.getContent().querySelector('b')
+                                .textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    onClose: () => {
+                        window.location.replace("http://localhost:57203/Inicio.aspx");
+                    }
+                })
+            }
+        </script>
+
 </asp:Content>
 
 
@@ -11,7 +34,7 @@
     <!--Required resources-->
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
-    <div class="h-100 mx-auto"  id="demopurpose">
+    <div class="h-100 mx-auto" id="demopurpose">
         <div class="container he-100">
             <div class="row justify-content-center align-items-center h-100">
                 <div class="col-12">
@@ -38,6 +61,9 @@
                                 </div>
                             </div>
                         </div>
+                        <asp:Label ID="lblAdvertencia" runat="server"></asp:Label>
+                        <br />
+                        <asp:Button ID="btnVerif" runat="server" Text="Verificar" OnClick="btnVerif_Click" Visible="False" />
                     </div>
                 </div>
             </div>

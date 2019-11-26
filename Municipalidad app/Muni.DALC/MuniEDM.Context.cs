@@ -25,7 +25,6 @@ namespace Muni.DALC
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<DIAS_FUNCIONARIO> DIAS_FUNCIONARIO { get; set; }
         public DbSet<FUNCIONARIO> FUNCIONARIO { get; set; }
         public DbSet<PERMISO> PERMISO { get; set; }
         public DbSet<RESOLUCION> RESOLUCION { get; set; }

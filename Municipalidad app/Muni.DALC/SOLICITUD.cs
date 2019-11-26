@@ -23,6 +23,7 @@ namespace Muni.DALC
         public System.DateTime FECHA_INICIO { get; set; }
         public System.DateTime FECHA_FIN { get; set; }
         public decimal ID_TIPO_PERMISO { get; set; }
+        public decimal ESTADO { get; set; }
         public string RUT { get; set; }
     
         public virtual FUNCIONARIO FUNCIONARIO { get; set; }

@@ -12,7 +12,6 @@ namespace Muni.Web
     public partial class MostrarSolicitud : System.Web.UI.Page
     {
         public Funcionario U1 { get { return (Funcionario)Session["_funcionario"]; } set { Session["_funcionario"] = value; } }
-        public int buscado { get { return (int)Session["_buscado"]; } set { Session["_buscado"] = value; } }
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)

@@ -16,7 +16,6 @@ namespace Muni.DALC
     {
         public FUNCIONARIO()
         {
-            this.DIAS_FUNCIONARIO = new HashSet<DIAS_FUNCIONARIO>();
             this.RESOLUCION = new HashSet<RESOLUCION>();
             this.SOLICITUD = new HashSet<SOLICITUD>();
         }
@@ -28,11 +27,12 @@ namespace Muni.DALC
         public string APELLIDOM { get; set; }
         public string CORREO { get; set; }
         public System.DateTime FECHA_CONTRATO { get; set; }
-        public decimal MOROSO { get; set; }
+        public string MOROSO { get; set; }
         public decimal ID_UNIDAD { get; set; }
         public decimal ID_ROL { get; set; }
+        public decimal DIAS_ADMINISTRATIVOS { get; set; }
+        public decimal DIAS_FERIADO_ANUAL { get; set; }
     
-        public virtual ICollection<DIAS_FUNCIONARIO> DIAS_FUNCIONARIO { get; set; }
         public virtual ROL ROL { get; set; }
         public virtual UNIDAD_INTERNA UNIDAD_INTERNA { get; set; }
         public virtual ICollection<RESOLUCION> RESOLUCION { get; set; }

@@ -20,7 +20,6 @@ namespace Muni.DALC
         }
     
         public decimal ID_PERMISO { get; set; }
-        public decimal ESTADO { get; set; }
         public string OBSERVACIONES { get; set; }
         public decimal CANTIDAD_DIAS { get; set; }
         public decimal PENDIENTE { get; set; }

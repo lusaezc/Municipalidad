@@ -100,7 +100,6 @@
     <Content Include="css-bootstrap\bootstrap-reboot.min.css" />
     <Content Include="css-bootstrap\bootstrap.css" />
     <Content Include="css-bootstrap\bootstrap.min.css" />
-    <Content Include="css\Calendario.css" />
     <Content Include="css\Login.css" />
     <Content Include="css\MiUnidad.css" />
     <Content Include="css\simple-sidebar.css" />
@@ -184,11 +183,13 @@
     <Content Include="GenerarSolicitud.aspx" />
     <Content Include="img\img_btn\correo.png" />
     <Content Include="img\img_btn\pdf.png" />
+    <Content Include="img\Login.jpg" />
     <Content Include="Inicio.aspx" />
     <Content Include="Js\Data.js" />
     <Content Include="Login.aspx" />
     <Content Include="MaestroResolucion.aspx" />
     <Content Include="MaestroSolicitud.aspx" />
+    <Content Include="MantenedorUnidades.aspx" />
     <Content Include="MostrarPermisos.aspx" />
     <Content Include="MostrarSolicitud.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -301,6 +302,13 @@
     </Compile>
     <Compile Include="MaestroSolicitud.aspx.designer.cs">
       <DependentUpon>MaestroSolicitud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MantenedorUnidades.aspx.cs">
+      <DependentUpon>MantenedorUnidades.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MantenedorUnidades.aspx.designer.cs">
+      <DependentUpon>MantenedorUnidades.aspx</DependentUpon>
     </Compile>
     <Compile Include="MostrarPermisos.aspx.cs">
       <DependentUpon>MostrarPermisos.aspx</DependentUpon>

@@ -3,114 +3,130 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script> function alertarme() {
-            Swal.fire(
-                'Pagina denegada para este tipo de usuario',
-                'Pulse para OK continuar',
-                'warning'
-            )
-        }
-    </script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script> function autorizar() {
-            Swal.fire({
-                title: 'Esta seguro?',
-                text: "Usted no podra revertirlo",
-                type: 'warning',
-                showCancelButton: true,
-                closeOnConfirm: false,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                cancelButtonText: 'No, cancelar!',
-                confirmButtonText: 'Si, Autorizar!',
-                allowEscapeKey: false,
-                allowOutsideClick: false
 
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        type: "POST",
-                        url: "AutorizarPermiso.aspx/Busqueda",
-                        data: JSON.stringify(data),
-                        contentType: "application/json; charset=utf-8",
-                        dataType: "json",
-                        success: function verificado(verif) {
-                            if (verif) {
-                                Swal.fire(
-                                    'Autorizado!',
-                                    'La solicitud fue autorizada de forma exitosa.',
-                                    'success');
-                            } else {
-                                Swal.fire(
-                                    'No ha sido autorizado!',
-                                    'Hubo un error al momento de autorizar, lo sentimos',
-                                    'error');
+        <script> function alertarme() {
+                let timerInterval
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Pagina denegada para este usuario!',
+                    html: 'Seras redirigido en <b></b> Milisegundos.',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            Swal.getContent().querySelector('b')
+                                .textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    onClose: () => {
+                        window.location.replace("http://localhost:57203/Inicio.aspx");
+                    }
+                })
+            }
+        </script>
 
-                            }
-                        }
-                    })
-                }
-            })
+
+    <script>  function verificacion(valido) {
+            if (valido) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'Wouh...',
+                    text: 'La solicitud fue autorizada exitosamente',
+                })
+            } else {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'La solicitud no pudo ser autorizada, Verifique que ingreso un ID valido',
+                })
+            }
         }
-
-
-
     </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
-    <asp:Panel ID="Panel1" runat="server" Height="331px">
-        <h1>&nbsp;</h1>
-        <center style="height: 655px; width: 1500px;">
-                    <center><h1>
-             <asp:Label ID="lblTitulo0" runat="server" Text="Panel para generar prestamos"></asp:Label>
-             </h1>
-             <p>
-                 &nbsp;</p>
-             <h2>
-                 <asp:Label ID="lblTitulo" runat="server" Text="Label"></asp:Label>
-             </h2>
-           </center>
-           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <br />
-        <br />
-        <asp:GridView ID="gvSCurso" runat="server" AllowPaging="True" CellPadding="3" OnPageIndexChanging="gvCola_PageIndexChanging" AutoGenerateColumns="False" OnSelectedIndexChanged="gvCola_SelectedIndexChanged" BackColor="#DEBA84" BorderColor="#DEBA84" BorderStyle="None" BorderWidth="1px" CellSpacing="2" Width="673px">
-            <Columns>
-                <asp:BoundField DataField="FechaInicio" HeaderText="Fecha Inicio     " DataFormatString = "{0:d}" />
-                <asp:BoundField DataField="FechaFin" HeaderText="Fecha Fin     " DataFormatString = "{0:d}" />
-                <asp:BoundField DataField="IdSolicitud" HeaderText="Id Solicitud     " />
-                <asp:BoundField DataField="Rut" HeaderText="Rut     " />
-                <asp:BoundField DataField="NombreUsuario" HeaderText="Nombre     " />
-                <asp:BoundField DataField="TipoPermiso" HeaderText="Tipo Permiso     " />
-            </Columns>
-            <EmptyDataTemplate>
-             <h3>No Hay Solicitudes En Curso.</h3>
-            </EmptyDataTemplate>
-            <FooterStyle BackColor="#F7DFB5" ForeColor="#8C4510" />
-            <HeaderStyle BackColor="#A55129" Font-Bold="True" ForeColor="White" />
-            <PagerStyle ForeColor="#8C4510" HorizontalAlign="Center" />
-            <RowStyle BackColor="#FFF7E7" ForeColor="#8C4510" />
-            <SelectedRowStyle BackColor="#738A9C" Font-Bold="True" ForeColor="White" />
-            <SortedAscendingCellStyle BackColor="#FFF1D4" />
-            <SortedAscendingHeaderStyle BackColor="#B95C30" />
-            <SortedDescendingCellStyle BackColor="#F1E5CE" />
-            <SortedDescendingHeaderStyle BackColor="#93451F" />
-        </asp:GridView>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="#" />
 
-           <br />
-           <br />
-           <h3>Ingresa el ID de la Solicitud que desea autorizar y la observación:</h3>
-           <p>
-               <asp:TextBox ID="txtObservacion" runat="server" Height="117px" Width="445px"></asp:TextBox>
-                    </p>
-           <asp:TextBox ID="txtBuscar" runat="server" onkeypress="return numbersonly(event);" Width="43px"></asp:TextBox>
+    <!-- Bootstrap CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- CSS personalizado -->
+    <link href="DataTable/main/main.css" rel="stylesheet" />
+    <!--datables CSS básico-->
+    <link rel="stylesheet" type="text/css" href="DataTable/datatables.min.css" />
+    <!--datables estilo bootstrap 4 CSS-->
+    <link rel="stylesheet" type="text/css" href="DataTable/DataTables-1.10.18/css/dataTables.bootstrap4.min.css">
 
-           &nbsp;&nbsp;&nbsp;
-           <asp:Button ID="btnAutorizar" runat="server" Text="Autorizar" OnClick="btnAutorizar_Click" />
-           <br />
-           <br />
-    </asp:Panel>
-    </center>
+    <!--font awesome con CDN-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+
+
+    <div style="height: 50px"></div>
+    <!--Ejemplo tabla con DataTables-->
+
+    <div class="container">
+        <div class="card card-luchito">
+            <div class="row">
+                <h2>
+                    <asp:Label ID="lblTitulo" runat="server"></asp:Label>
+                </h2>
+                <br />
+                <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                            <thead>
+                                <tr>
+                                    <th>Id de Solicitud</th>
+                                    <th>Fecha de Inicio</th>
+                                    <th>Fecha de Fin</th>
+                                    <th>Rut del Funcionario</th>
+                                    <th>Id Tipo Permiso</th>
+                                    <th>Estado</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        Ingrese las observaciones de la solicitud<br />
+        <asp:TextBox ID="txtObservaciones" runat="server" Width="498px" Height="158px"></asp:TextBox>
+        <br />
+        Ingrese la solicitud que desea autorizar
+        <asp:TextBox ID="txtcod" runat="server" placeholder="Id de Solicitud"></asp:TextBox>
+        <asp:Button ID="btnVerificar" type="button" class="btn btn-primary btn-rounded" runat="server" Text="Autorizar" OnClick="btnVerificar_Click" />
+
+    </div>
+
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="DataTable/popper/popper.min.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <!-- puede estar malo******** -->
+
+    <!-- datatables JS -->
+    <script type="text/javascript" src="DataTable/datatables.min.js"></script>
+
+    <!-- para usar botones en datatables JS -->
+    <script src="DataTable/Buttons-1.5.6/js/dataTables.buttons.min.js"></script>
+    <script src="DataTable/JSZip-2.5.0/jszip.min.js"></script>
+    <script src="DataTable/pdfmake-0.1.36/pdfmake.min.js"></script>
+    <script src="DataTable/pdfmake-0.1.36/vfs_fonts.js"></script>
+    <script src="DataTable/Buttons-1.5.6/js/buttons.html5.min.js"></script>
+
+    <!-- código JS propìo-->
+    <script src="DataTable/main/main.js"></script>
+    <script src="Js/Data.js"></script>
+    <script>
+        $(function () {
+            verifPermiso();
+        });
+    </script>
+
 
 </asp:Content>

@@ -4,17 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="95e2fdd2cf884ae88d1975356f31bc8f" Name="Diagram1">
-        <EntityTypeShape EntityType="MuniModel.DIAS_FUNCIONARIO" Width="1.5" PointX="5.25" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuniModel.FUNCIONARIO" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuniModel.PERMISO" Width="1.5" PointX="10.5" PointY="4.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuniModel.RESOLUCION" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuniModel.ROL" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuniModel.SOLICITUD" Width="1.5" PointX="8.25" PointY="4.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuniModel.TIPO_PERMISO" Width="1.5" PointX="6" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="MuniModel.UNIDAD_INTERNA" Width="1.5" PointX="0.75" PointY="1.875" IsExpanded="true" />
-        <AssociationConnector Association="MuniModel.DIAS_FUN_TIPO_PERMISO_FK" ManuallyRouted="false" />
-        <AssociationConnector Association="MuniModel.DIAS_FUNCIONARIO_FK" ManuallyRouted="false" />
+      <Diagram DiagramId="4d3f6dc9c1be4437b0ae9fefb6492eaa" Name="Diagram1" ZoomLevel="55">
+        <EntityTypeShape EntityType="MuniModel.FUNCIONARIO" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuniModel.PERMISO" Width="1.5" PointX="10.5" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuniModel.RESOLUCION" Width="1.5" PointX="5.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuniModel.ROL" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuniModel.SOLICITUD" Width="1.5" PointX="8.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuniModel.TIPO_PERMISO" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuniModel.UNIDAD_INTERNA" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="MuniModel.FUNCIONARIO_ROL_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MuniModel.FUNCIONARIO_UNIDAD_INTERNA_FK" ManuallyRouted="false" />
         <AssociationConnector Association="MuniModel.RESOLUCION_FUNCIONARIO_FK" ManuallyRouted="false" />

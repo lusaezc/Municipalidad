@@ -9,7 +9,6 @@ namespace Muni.Negocio
     public class Permiso : ICrud
     {
         public int IdPermiso { get; set; }
-        public int Estado { get; set; }
         public string Observaciones { get; set; }
         public int CantidadDias { get; set; }
 
@@ -17,33 +16,6 @@ namespace Muni.Negocio
         public int IdSolicitud { get; set; }
         public int CodVerificacion { get; set; }
 
-        private string estadoStr;
-
-        public string EstadoStr
-        {
-            get
-            {
-                if (Estado == 1)
-                {
-                    estadoStr = string.Format("solicitado");
-                }
-                else if (Estado == 2)
-                {
-                    estadoStr = string.Format("firmado");
-                }
-                else if (Estado == 3)
-                {
-                    estadoStr = string.Format("autorizado");
-                }
-                else
-                {
-                    estadoStr = string.Format("rechazado");
-                }
-                return estadoStr;
-            }
-
-            set { estadoStr = value; }
-        }
 
 
 
@@ -60,6 +32,8 @@ namespace Muni.Negocio
             }
         }
 
+
+
         public string NombreUsuario
         {
 
@@ -72,12 +46,12 @@ namespace Muni.Negocio
             }
         }
 
-        public string PendienteDesplegar
-        {
+        private string pendienteStr;
 
+        public string PendienteStr
+        {
             get
             {
-
                 if (Pendiente == 1)
                 {
                     return "Si";
@@ -86,8 +60,8 @@ namespace Muni.Negocio
                 {
                     return "No";
                 }
-
             }
+            set { pendienteStr = value; }
         }
 
 
@@ -99,7 +73,6 @@ namespace Muni.Negocio
         private void Init()
         {
             IdPermiso = 0;
-            Estado = 0;
             Observaciones = string.Empty;
             CantidadDias = 0;
             Pendiente = 0;
@@ -114,7 +87,6 @@ namespace Muni.Negocio
                 DALC.PERMISO p1 = new DALC.PERMISO();
 
                 p1.ID_PERMISO = IdPermiso;
-                p1.ESTADO = Estado;
                 p1.OBSERVACIONES = Observaciones;
                 p1.CANTIDAD_DIAS = CantidadDias;
                 p1.PENDIENTE = Pendiente;
@@ -155,7 +127,17 @@ namespace Muni.Negocio
 
         public bool Update()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DALC.PERMISO s1 = CommonBC.Modelo.PERMISO.First(s => s.ID_PERMISO == IdPermiso);
+                s1.PENDIENTE = Pendiente;
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Delete()

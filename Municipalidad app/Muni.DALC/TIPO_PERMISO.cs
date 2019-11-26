@@ -16,7 +16,6 @@ namespace Muni.DALC
     {
         public TIPO_PERMISO()
         {
-            this.DIAS_FUNCIONARIO = new HashSet<DIAS_FUNCIONARIO>();
             this.SOLICITUD = new HashSet<SOLICITUD>();
         }
     
@@ -24,7 +23,6 @@ namespace Muni.DALC
         public string NOMBRE { get; set; }
         public decimal NRO_DIAS { get; set; }
     
-        public virtual ICollection<DIAS_FUNCIONARIO> DIAS_FUNCIONARIO { get; set; }
         public virtual ICollection<SOLICITUD> SOLICITUD { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Muni.Negocio
 
                 t.IdResolucion = (int)item.ID_RESOLUCION;
                 t.Detalle = item.DETALLE;
-                t.Correlativo = (int)item.CORRELATIVO;
+
                 t.Rut = item.RUT;
                 t.IdPermiso = (int)item.ID_PERMISO;
 

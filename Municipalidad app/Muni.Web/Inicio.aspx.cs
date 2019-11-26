@@ -17,11 +17,38 @@ namespace MuniWeb
         {
             if (!IsPostBack)
             {
+                List<Solicitud> solicitudes = new SolicitudCollection().ReadAll().Where(p => p.Rut == U1.Rut && p.FechaFin.Day < DateTime.Today.Day+1).ToList();
+                List<Permiso> permisos = new PermisoCollection().ReadAll().Where(p => p.Rut == U1.Rut && p.Pendiente == 1).ToList();
                 lblinfo1.Text = string.Format("{0}", U1.TipoUsuario);
                 lblinfo0.Text = string.Format("{0} {1} {2}", U1.Nombre, U1.ApellidoP, U1.ApellidoM);
                 lblinfo2.Text = string.Format("Correo: {0}", U1.Correo);
                 lblinfo4.Text = string.Format("Unidad: {0}", U1.TipoUnidad);
                 lblinfo3.Text = string.Format("Fecha Contrato: {0}", U1.FechaContrato.ToShortDateString());
+                if (solicitudes.Count() > 0 && U1.Moroso == 0 && permisos.Count() > 0)
+                {
+                    U1.Moroso = 1;
+                }
+                if (permisos.Count() > 0)
+                {
+                    lblAdvertencia.Text = string.Format("Usted tiene un permiso pendiente");
+                    btnVerif.Visible = true;
+                }
+            }
+        }
+
+        protected void btnVerif_Click(object sender, EventArgs e)
+        {
+            List<Solicitud> solicituds = new SolicitudCollection().ReadAll().Where(p => p.Rut == U1.Rut && p.FechaFin.Day < DateTime.Today.Day + 1).ToList();
+            Inicio inicio = new Inicio();
+            foreach (var s in solicituds)
+            {
+                Permiso per = new PermisoCollection().ReadAll().First(a => a.IdPermiso == s.IdSolicitud && a.Pendiente == 1);
+                per.Pendiente = 0;
+                if (per.Update())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
+                    break;
+                }
             }
         }
     }

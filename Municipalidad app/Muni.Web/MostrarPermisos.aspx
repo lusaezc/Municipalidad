@@ -1,14 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MostrarPermisos.aspx.cs" Inherits="Muni.Web.MostrarPermisos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
             <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script> function alertarme() {
-            Swal.fire(
-                'Pagina denegada para este tipo de usuario',
-                'Pulse para OK continuar',
-                'warning'
-            )
-        }
-    </script>
+
+        <script> function alertarme() {
+                let timerInterval
+                Swal.fire({
+                    type: 'warning',
+                    title: 'Pagina denegada para este usuario!',
+                    html: 'Seras redirigido en <b></b> Milisegundos.',
+                    timer: 3000,
+                    timerProgressBar: true,
+                    onBeforeOpen: () => {
+                        Swal.showLoading()
+                        timerInterval = setInterval(() => {
+                            Swal.getContent().querySelector('b')
+                                .textContent = Swal.getTimerLeft()
+                        }, 100)
+                    },
+                    onClose: () => {
+                        window.location.replace("http://localhost:57203/Inicio.aspx");
+                    }
+                })
+            }
+        </script>
 
     <script>  function verificacion(valido) {
             if (valido) {
@@ -59,10 +73,10 @@
                             <thead>
                                 <tr>
                                     <th>Id del Permiso</th>
-                                    <th>Estado</th>
                                     <th>Observaciones</th>
                                     <th>Cantidad de Dias</th>
                                     <th>Pendiente</th>
+                                    <th>Id Solicitud</th>                                    
                                     <th>Codigo de Verificacion</th>
                                 </tr>
                             </thead>

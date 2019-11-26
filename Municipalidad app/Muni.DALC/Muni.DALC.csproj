@@ -48,9 +48,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DIAS_FUNCIONARIO.cs">
-      <DependentUpon>MuniEDM.tt</DependentUpon>
-    </Compile>
     <Compile Include="FUNCIONARIO.cs">
       <DependentUpon>MuniEDM.tt</DependentUpon>
     </Compile>

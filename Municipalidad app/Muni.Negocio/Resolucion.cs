@@ -10,7 +10,6 @@ namespace Muni.Negocio
     {
         public int IdResolucion { get; set; }
         public string Detalle { get; set; }
-        public int Correlativo { get; set; }
         public string Rut { get; set; }
         public int IdPermiso { get; set; }
 
@@ -57,7 +56,6 @@ namespace Muni.Negocio
         {
             IdResolucion = 0;
             Detalle = string.Empty;
-            Correlativo = 0;
             Rut = string.Empty;
             IdPermiso = 0;
         }

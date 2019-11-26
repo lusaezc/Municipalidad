@@ -16,7 +16,7 @@ namespace Muni.DALC
     {
         public decimal ID_RESOLUCION { get; set; }
         public string DETALLE { get; set; }
-        public decimal CORRELATIVO { get; set; }
+        public decimal COD_VERIFICACION { get; set; }
         public decimal ID_PERMISO { get; set; }
         public string RUT { get; set; }
     

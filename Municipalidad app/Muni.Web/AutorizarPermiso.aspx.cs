@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
@@ -22,65 +24,53 @@ namespace Muni.Web
                 }
                 else
                 {
-
                     lblTitulo.Text = string.Format("Solicitudes actuales en la unidad: {0}", U1.TipoUnidad);
-                    CargarGv();
+                    CargarDataTable();
                 }
             }
-
-
-
-        }
-        private void CargarGv()
-        {
-            List<Solicitud> ls = new SolicitudCollection().ReadAll().Where(s => s.TipoUsuario == U1.IdTipoUsuario).OrderBy(s => s.IdSolicitud).ToList();
-            gvSCurso.DataSource = ls;
-            gvSCurso.DataBind();
-        }
-
-        protected void gvCola_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            gvSCurso.PageIndex = e.NewPageIndex;
-            CargarGv();
-        }
-
-        protected void gvCola_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         [WebMethod]
-        public static void Busqueda(int buscar)
+        public static object CargarDataTable()
         {
-
-            Solicitud s = new Solicitud();
-            Permiso p = new Permiso();
-            int num;
-            num = buscar;
-            List<Permiso> ls = new PermisoCollection().ReadAll().Where(l => l.IdSolicitud == num).ToList();
-
-            if (ls.Count() == 0)
-            {
-                p.IdPermiso = 0;
-            }
-            else
-            {
-                p.IdPermiso = ls.Max(q => q.IdSolicitud) + 1;
-            }
-            p.Estado = 0;
-            p.Observaciones = "dsadas";
-            //p.CantidadDias = s.FechaInicio.Day - s.FechaFin.Day;
-            p.Pendiente = 0;
-            p.IdSolicitud = num;
-            p.CodVerificacion = new Random().Next(10000, 100000);
-            
-            p.Create();
-
+            MostrarSolicitud ms = new MostrarSolicitud();
+            List<Solicitud> ls = new SolicitudCollection().ReadAll().Where(e => e.TipoUsuario == ms.U1.IdTipoUsuario && e.EstadoStr == "solicitado").OrderBy(s => s.IdSolicitud).ToList();
+            object json = new { data = ls };
+            return json;
         }
 
-        protected void btnAutorizar_Click(object sender, EventArgs e)
+
+        protected void btnVerificar_Click(object sender, EventArgs e)
         {
-            ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "autorizar()", true);
+            {
+
+                Permiso p = new Permiso();
+                string numS = txtcod.Text;
+                int num = int.Parse(numS);
+                Solicitud s = new SolicitudCollection().ReadAll().First(sc => sc.IdSolicitud == num);
+
+                List<Permiso> ls = new PermisoCollection().ReadAll().ToList();
+
+
+
+                p.IdPermiso = ls.Count() + 1;
+                p.Observaciones = txtObservaciones.Text;
+                p.CantidadDias = s.FechaFin.Day - s.FechaInicio.Day;
+                p.Pendiente = 1;
+                p.IdSolicitud = num;
+                p.CodVerificacion = new Random().Next(10000, 100000);
+
+                if (p.Create())
+                {
+                    s.Estado = 2;
+                    s.Update();
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
+                }
+            }
         }
     }
 }

@@ -11,12 +11,11 @@ namespace Muni.Web
     public partial class GenerarSolicitud : System.Web.UI.Page
     {
         public Funcionario U1 { get { return (Funcionario)Session["_funcionario"]; } set { Session["_funcionario"] = value; } }
-        public DiasFuncionario F1 { get { return (DiasFuncionario)Session["_diasfuncionario"]; } set { Session["_diasfuncionario"] = value; } }
         DateTime limite;
         int CantidadDias = 0;
 
         List<TipoPermiso> PermisosColl = new TipoPermisoCollection().ReadAll().ToList();
-        public List<DiasFuncionario> ld;
+
 
 
 
@@ -24,14 +23,17 @@ namespace Muni.Web
         {
             if (!IsPostBack)
             {
+                if (U1.Moroso == 1)
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
+                }
                 CargarDll();
-                // lblTitulo.Text = string.Format("Haz tu solicitud en tu unidad interna", U1.TipoUnidad);
+                lblTitulo.Text = string.Format("Haz tu solicitud en tu unidad interna", U1.TipoUnidad);
             }
         }
 
         private void CargarDll()
         {
-
             ddlCategoria.DataSource = PermisosColl;
             ddlCategoria.DataTextField = "Nombre";
             ddlCategoria.DataValueField = "IdTipoPermiso";
@@ -72,7 +74,6 @@ namespace Muni.Web
             s1.FechaFin = Calendar2.SelectedDate;
             s1.Rut = U1.Rut;
 
-            DiasFuncionario st = new DiasFuncionario();
 
             //if (ddlCategoria.SelectedIndex == 0 || ddlCategoria.SelectedIndex == 1)
             //{

@@ -26,10 +26,12 @@ namespace Muni.Negocio
                 s.IdSolicitud = (int)item.ID_SOLICITUD;
                 s.FechaInicio = item.FECHA_INICIO;
                 s.Rut = item.RUT;
+                s.Estado = (int)item.ESTADO;
                 s.FechaFin = item.FECHA_FIN;
                 s.IdTipoPermiso = (int)item.ID_TIPO_PERMISO;
                 s.FechaInicioStr = item.FECHA_INICIO.ToString();
                 s.FechaFinStr = item.FECHA_FIN.ToString();
+                s.EstadoStr = item.ESTADO.ToString();
                 ls.Add(s);
             }
             return ls;

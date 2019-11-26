@@ -48,8 +48,6 @@
   <ItemGroup>
     <Compile Include="CommonBC.cs" />
     <Compile Include="Correo.cs" />
-    <Compile Include="DiasFuncionario.cs" />
-    <Compile Include="DiasFuncionarioCollection.cs" />
     <Compile Include="Funcionario.cs" />
     <Compile Include="ICrud.cs" />
     <Compile Include="Permiso.cs" />
@@ -63,6 +61,7 @@
     <Compile Include="TipoPermiso.cs" />
     <Compile Include="TipoPermisoCollection.cs" />
     <Compile Include="Unidad.cs" />
+    <Compile Include="UnidadCollection.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Muni.DALC\Muni.DALC.csproj">

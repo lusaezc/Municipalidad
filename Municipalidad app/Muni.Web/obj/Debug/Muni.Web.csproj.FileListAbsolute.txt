@@ -490,8 +490,8 @@ C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.DALC.pdb
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.DALC.dll.config
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\EntityFramework.xml
-C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.csprojAssemblyReference.cache
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.csproj.CoreCompileInputs.cache
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.csproj.CopyComplete
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.dll
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.pdb
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\obj\Debug\Muni.Web.csprojAssemblyReference.cache

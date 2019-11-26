@@ -27,7 +27,6 @@ namespace Muni.Negocio
                 permiso = new Permiso();
 
                 permiso.IdPermiso = (int)item.ID_PERMISO;
-                permiso.Estado = (int)item.ESTADO;
                 permiso.Observaciones = item.OBSERVACIONES;
                 permiso.CantidadDias = (int)item.CANTIDAD_DIAS;
                 
@@ -38,6 +37,7 @@ namespace Muni.Negocio
 
                 permiso.IdSolicitud = (int)item.ID_SOLICITUD;
                 permiso.CodVerificacion = (int)item.COD_VERIFICACION;
+                permiso.PendienteStr = item.PENDIENTE.ToString();
 
                 lp.Add(permiso);
             }

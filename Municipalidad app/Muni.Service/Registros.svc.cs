@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using System.Web.Script.Serialization;
 using Muni.Negocio;
 
 namespace Muni.Service
@@ -14,10 +15,8 @@ namespace Muni.Service
     {
         public string ReadUsuario(string xml)
         {
-
             try
             {
-
                 Funcionario f1 = Funcionario.Deserializar(xml);
                 if (f1.Read())
                 {
@@ -30,13 +29,40 @@ namespace Muni.Service
             }
             catch (Exception ex)
             {
-
                 return null;
             }
         }
 
 
+        public bool CreateSolicitudJson(string json)
+        {
+            try
+            {
 
+                Solicitud s1 = new JavaScriptSerializer().Deserialize<Solicitud>(json);
+                if (s1.Create())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+        public string ReadCollectionSolicitudJson()
+        {
+            List<Solicitud> ls = new SolicitudCollection().ReadAll();
+            var json = new JavaScriptSerializer().Serialize(ls);
+
+            return json;
+        }
 
         public bool ValidarUsuario(string xml)
         {
@@ -47,13 +73,9 @@ namespace Muni.Service
             }
             catch (Exception ex)
             {
-
                 return false;
             }
-
         }
-
-
 
     }
 }

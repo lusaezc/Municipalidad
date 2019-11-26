@@ -17,6 +17,11 @@ namespace Muni.Service
         [OperationContract]
         string ReadUsuario(string xml);
 
+        [OperationContract]
+        bool CreateSolicitudJson(string json);
+
+        [OperationContract]
+        string ReadCollectionSolicitudJson();
 
     }
 }

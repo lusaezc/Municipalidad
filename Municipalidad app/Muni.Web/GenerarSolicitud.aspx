@@ -1,5 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="GenerarSolicitud.aspx.cs" Inherits="Muni.Web.GenerarSolicitud" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+
+    <script> function alertarme() {
+            let timerInterval
+            Swal.fire({
+                type: 'warning',
+                title: 'Pagina denegada, Usted es un usuario moroso! Comuniquese con su unidad!',
+                html: 'Seras redirigido en <b></b> Milisegundos.',
+                timer: 5000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('b')
+                            .textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                onClose: () => {
+                    window.location.replace("http://localhost:57203/Inicio.aspx");
+                }
+            })
+        }
+    </script>
 
     <script>  function verificacion(valido) {
             if (valido) {
@@ -21,14 +44,20 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <div class="container">
+    <div class="container text-center">
         <div class="card card-luchito">
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
-                        <h3>Tipo de permiso :&nbsp;&nbsp;
-        <asp:DropDownList ID="ddlCategoria" runat="server" Width="199px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
-        </asp:DropDownList>
+                        <br />
+                        <h2>
+                            <asp:Label ID="lblTitulo" runat="server"></asp:Label>
+                        </h2>
+                        <br />
+                        <br />
+                        <asp:Label ID="Label1" runat="server" Text="Tipo Permiso:"></asp:Label>
+                        <asp:DropDownList ID="ddlCategoria" runat="server" Width="215px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
+                        </asp:DropDownList>
                         <p>
                             &nbsp;
                         </p>

@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="MuniModelStoreContainer" CdmEntityContainer="MuniEntities">
-    <EntitySetMapping Name="DIAS_FUNCIONARIO">
-      <EntityTypeMapping TypeName="MuniModel.DIAS_FUNCIONARIO">
-        <MappingFragment StoreEntitySet="DIAS_FUNCIONARIO">
-          <ScalarProperty Name="ID_DIAS" ColumnName="ID_DIAS" />
-          <ScalarProperty Name="DIAS_HABILES_DISPONIBLES" ColumnName="DIAS_HABILES_DISPONIBLES" />
-          <ScalarProperty Name="ID_TIPO_PERMISO" ColumnName="ID_TIPO_PERMISO" />
-          <ScalarProperty Name="RUT" ColumnName="RUT" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="FUNCIONARIO">
       <EntityTypeMapping TypeName="MuniModel.FUNCIONARIO">
         <MappingFragment StoreEntitySet="FUNCIONARIO">
@@ -24,6 +14,8 @@
           <ScalarProperty Name="MOROSO" ColumnName="MOROSO" />
           <ScalarProperty Name="ID_UNIDAD" ColumnName="ID_UNIDAD" />
           <ScalarProperty Name="ID_ROL" ColumnName="ID_ROL" />
+          <ScalarProperty Name="DIAS_ADMINISTRATIVOS" ColumnName="DIAS_ADMINISTRATIVOS" />
+          <ScalarProperty Name="DIAS_FERIADO_ANUAL" ColumnName="DIAS_FERIADO_ANUAL" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -31,7 +23,6 @@
       <EntityTypeMapping TypeName="MuniModel.PERMISO">
         <MappingFragment StoreEntitySet="PERMISO">
           <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
-          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="OBSERVACIONES" ColumnName="OBSERVACIONES" />
           <ScalarProperty Name="CANTIDAD_DIAS" ColumnName="CANTIDAD_DIAS" />
           <ScalarProperty Name="PENDIENTE" ColumnName="PENDIENTE" />
@@ -45,7 +36,7 @@
         <MappingFragment StoreEntitySet="RESOLUCION">
           <ScalarProperty Name="ID_RESOLUCION" ColumnName="ID_RESOLUCION" />
           <ScalarProperty Name="DETALLE" ColumnName="DETALLE" />
-          <ScalarProperty Name="CORRELATIVO" ColumnName="CORRELATIVO" />
+          <ScalarProperty Name="COD_VERIFICACION" ColumnName="COD_VERIFICACION" />
           <ScalarProperty Name="ID_PERMISO" ColumnName="ID_PERMISO" />
           <ScalarProperty Name="RUT" ColumnName="RUT" />
         </MappingFragment>
@@ -66,6 +57,7 @@
           <ScalarProperty Name="FECHA_INICIO" ColumnName="FECHA_INICIO" />
           <ScalarProperty Name="FECHA_FIN" ColumnName="FECHA_FIN" />
           <ScalarProperty Name="ID_TIPO_PERMISO" ColumnName="ID_TIPO_PERMISO" />
+          <ScalarProperty Name="ESTADO" ColumnName="ESTADO" />
           <ScalarProperty Name="RUT" ColumnName="RUT" />
         </MappingFragment>
       </EntityTypeMapping>

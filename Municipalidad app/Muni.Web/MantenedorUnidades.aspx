@@ -1,18 +1,15 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MostrarSolicitud.aspx.cs" Inherits="Muni.Web.MostrarSolicitud" %>
-
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MantenedorUnidades.aspx.cs" Inherits="Muni.Web.MantenedorUnidades" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-
+    
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="#" />
 
+    <link href="https://cdn.datatables.net/select/1.3.1/css/select.dataTables.min.css" rel="stylesheet" />
     <!-- Bootstrap CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <!-- CSS personalizado -->
@@ -36,12 +33,8 @@
                         <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
                                 <tr>
-                                    <th>Id de Solicitud</th>
-                                    <th>Fecha de Inicio</th>
-                                    <th>Fecha de Fin</th>
-                                    <th>Rut del Funcionario</th>
-                                    <th>Id Tipo Permiso</th>
-                                    <th>Estado</th>
+                                    <th>Id Unidad</th>
+                                    <th>Nombre</th>
                                 </tr>
                             </thead>
                         </table>
@@ -71,7 +64,7 @@
     <script src="Js/Data.js"></script>
     <script>
         $(function () {
-            dtUsers();
+            unidades();
         });
     </script>
 

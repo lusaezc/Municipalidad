@@ -19,7 +19,7 @@ namespace Muni.Web
             {
                 if (U1.IdRol != 3)
                 {
-                    //ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
                 }
             }
         }

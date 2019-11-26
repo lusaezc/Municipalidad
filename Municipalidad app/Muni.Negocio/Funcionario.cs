@@ -18,6 +18,8 @@ namespace Muni.Negocio
         public int Moroso { get; set; }
         public int IdUnidad { get; set; }
         public int IdRol { get; set; }
+        public int DiasAdministrativos { get; set; }
+        public int DiasFeriadoLegal { get; set; }
 
 
 
@@ -35,7 +37,8 @@ namespace Muni.Negocio
             Moroso = 0;
             IdUnidad = 0;
             IdRol = 0;
-
+            DiasAdministrativos = 0;
+            DiasFeriadoLegal = 0;
 
         }
 
@@ -64,7 +67,9 @@ namespace Muni.Negocio
                 FechaContrato = u1.FECHA_CONTRATO;
                 IdRol = (int)u1.ID_ROL;
                 IdUnidad = (int)u1.ID_UNIDAD;
-                Moroso = (int)u1.MOROSO;
+                Moroso = int.Parse(u1.MOROSO);
+                DiasAdministrativos = (int)u1.DIAS_ADMINISTRATIVOS;
+                DiasFeriadoLegal = (int)u1.DIAS_FERIADO_ANUAL;
 
                 return true;
             }
@@ -88,7 +93,7 @@ namespace Muni.Negocio
                 u.FECHA_CONTRATO = FechaContrato;
                 u.ID_UNIDAD = IdUnidad;
                 u.ID_ROL = IdRol;
-                u.MOROSO = Moroso;
+                u.MOROSO = Moroso.ToString();
 
                 CommonBC.Modelo.SaveChanges();
                 return true;
@@ -96,6 +101,24 @@ namespace Muni.Negocio
             catch (Exception ex)
             {
                 return false;
+            }
+        }
+
+        public string MorosoDesplegar
+        {
+
+            get
+            {
+
+                if (Moroso == 1)
+                {
+                    return "SI";
+                }
+                else
+                {
+                    return "NO";
+                }
+
             }
         }
 

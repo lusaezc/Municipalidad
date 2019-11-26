@@ -18,6 +18,12 @@
   <wsdl:message name="IRegistros_ReadUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadUsuarioResponse" />
   </wsdl:message>
+  <wsdl:message name="IRegistros_SerializarJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:SerializarJson" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_SerializarJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SerializarJsonResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRegistros">
     <wsdl:operation name="ValidarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ValidarUsuario" message="tns:IRegistros_ValidarUsuario_InputMessage" />
@@ -26,6 +32,10 @@
     <wsdl:operation name="ReadUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadUsuario" message="tns:IRegistros_ReadUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadUsuarioResponse" message="tns:IRegistros_ReadUsuario_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SerializarJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/SerializarJson" message="tns:IRegistros_SerializarJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/SerializarJsonResponse" message="tns:IRegistros_SerializarJson_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRegistros" type="tns:IRegistros">
@@ -41,6 +51,15 @@
     </wsdl:operation>
     <wsdl:operation name="ReadUsuario">
       <soap:operation soapAction="http://tempuri.org/IRegistros/ReadUsuario" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SerializarJson">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/SerializarJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

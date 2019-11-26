@@ -50,12 +50,45 @@
     <form id="form1" runat="server">
         <div class="d-flex" id="wrapper" style="background-color: #e1e1e1;">
 
+
+
             <!-- Sidebar -->
             <div class="bg-light border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading">Panel </div>
                 <div class="list-group list-group-flush">
                     <a href="Inicio.aspx" class="list-group-item list-group-item-action bg-light">Inicio</a>
                     <a href="GenerarSolicitud.aspx" class="list-group-item list-group-item-action bg-light">Generar Solicitud</a>
+                    <li class="nav-item">
+                        <a class="nav-link collapsed text-truncate" href="#submenu1" data-toggle="collapse" data-target="#submenu1"><i class="fa fa-table"></i><span class="d-none d-sm-inline">Reports</span></a>
+                        <div class="collapse" id="submenu1" aria-expanded="false">
+                            <ul class="flex-column pl-2 nav">
+                                <li class="nav-item"><a class="nav-link py-0" href="#"><span>Orders</span></a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link collapsed py-1" href="#submenu1sub1" data-toggle="collapse" data-target="#submenu1sub1"><span>Customers</span></a>
+                                    <div class="collapse" id="submenu1sub1" aria-expanded="false">
+                                        <ul class="flex-column nav pl-4">
+                                            <li class="nav-item">
+                                                <a class="nav-link p-1" href="#">
+                                                    <i class="fa fa-fw fa-clock-o"></i>Daily </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link p-1" href="#">
+                                                    <i class="fa fa-fw fa-dashboard"></i>Dashboard </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link p-1" href="#">
+                                                    <i class="fa fa-fw fa-bar-chart"></i>Charts </a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link p-1" href="#">
+                                                    <i class="fa fa-fw fa-compass"></i>Areas </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
                     <a href="MostrarSolicitud.aspx" class="list-group-item list-group-item-action bg-light">Ver Solicitud</a>
                     <a href="MostrarPermisos.aspx" class="list-group-item list-group-item-action bg-light">Ver Permisos</a>
                     <a href="MaestroResolucion.aspx" class="list-group-item list-group-item-action bg-light">Generar Resolucion</a>
@@ -74,9 +107,9 @@
             </asp:ContentPlaceHolder>
         </div>
 
-       <%-- <script src="vendor/jquery/jquery.min.js"></script> 
+        <%-- <script src="vendor/jquery/jquery.min.js"></script> 
            al dejarlo se ven los botones para exportar la lista pero no los datos, 
-           al sacarlo se ven los datos pero no los botones  --%> 
+           al sacarlo se ven los datos pero no los botones  --%>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 
@@ -87,8 +120,6 @@
                 $("#wrapper").toggleClass("toggled");
             });
         </script>
-
-
     </form>
 </body>
 </html>
