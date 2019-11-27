@@ -30,7 +30,7 @@ namespace MuniWeb
                 }
                 if (permisos.Count() > 0)
                 {
-                    lblAdvertencia.Text = string.Format("Usted tiene un permiso pendiente");
+                    lblAdvertencia.Text = string.Format("Usted tiene {0} permiso pendiente",permisos.Count());
                     btnVerif.Visible = true;
                 }
             }
@@ -38,18 +38,12 @@ namespace MuniWeb
 
         protected void btnVerif_Click(object sender, EventArgs e)
         {
-            List<Solicitud> solicituds = new SolicitudCollection().ReadAll().Where(p => p.Rut == U1.Rut && p.FechaFin.Day < DateTime.Today.Day + 1).ToList();
-            Inicio inicio = new Inicio();
-            foreach (var s in solicituds)
-            {
-                Permiso per = new PermisoCollection().ReadAll().First(a => a.IdPermiso == s.IdSolicitud && a.Pendiente == 1);
-                per.Pendiente = 0;
-                if (per.Update())
+            Permiso permiso = new PermisoCollection().ReadAll().First(a => a.Pendiente == 1);
+                permiso.Pendiente = 0;
+                if (permiso.Update())
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
-                    break;
                 }
             }
         }
     }
-}

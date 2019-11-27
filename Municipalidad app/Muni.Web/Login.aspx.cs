@@ -40,7 +40,7 @@ namespace Muni.Web
                     proxy.Close();
                     u = Funcionario.Deserializar(xml);
                     Session["_funcionario"] = u;
-                    Response.Redirect("MantenedorUnidades.aspx");
+                    Response.Redirect("Inicio.aspx");
                 }
                 else
                 {

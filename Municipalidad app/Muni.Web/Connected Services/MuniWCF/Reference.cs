@@ -50,6 +50,12 @@ namespace Muni.Web.MuniWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadUsuarioJson", ReplyAction="http://tempuri.org/IRegistros/ReadUsuarioJsonResponse")]
         System.Threading.Tasks.Task<string> ReadUsuarioJsonAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJson", ReplyAction="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJsonResponse")]
+        string ReadCollectionFuncionarioJson();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJson", ReplyAction="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJsonResponse")]
+        System.Threading.Tasks.Task<string> ReadCollectionFuncionarioJsonAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -125,6 +131,14 @@ namespace Muni.Web.MuniWCF {
         
         public System.Threading.Tasks.Task<string> ReadUsuarioJsonAsync(string json) {
             return base.Channel.ReadUsuarioJsonAsync(json);
+        }
+        
+        public string ReadCollectionFuncionarioJson() {
+            return base.Channel.ReadCollectionFuncionarioJson();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadCollectionFuncionarioJsonAsync() {
+            return base.Channel.ReadCollectionFuncionarioJsonAsync();
         }
     }
 }
