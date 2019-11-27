@@ -19,6 +19,8 @@ namespace Muni.Web
                 fechaCon1.Text = string.Format("{0}", U1.FechaContrato);
             }
 
+            List<Funcionario> listafuncionarios = new FuncionarioCollection().ReadAll().Where(l => l.IdUnidad == U1.IdUnidad).ToList();
+
 
         }
 

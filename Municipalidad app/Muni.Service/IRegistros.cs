@@ -28,5 +28,8 @@ namespace Muni.Service
 
         [OperationContract]
         string ReadUsuarioJson(string json);
+
+        [OperationContract]
+        string ReadCollectionFuncionarioJson();
     }
 }

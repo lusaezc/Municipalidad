@@ -49,6 +49,7 @@
     <Compile Include="CommonBC.cs" />
     <Compile Include="Correo.cs" />
     <Compile Include="Funcionario.cs" />
+    <Compile Include="FuncionarioCollection.cs" />
     <Compile Include="ICrud.cs" />
     <Compile Include="Permiso.cs" />
     <Compile Include="PermisoCollection.cs" />

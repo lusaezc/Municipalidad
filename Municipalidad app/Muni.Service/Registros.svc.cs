@@ -56,13 +56,9 @@ namespace Muni.Service
             }
         }
 
-        public string ReadCollectionSolicitudJson()
-        {
-            List<Solicitud> ls = new SolicitudCollection().ReadAll();
-            var json = new JavaScriptSerializer().Serialize(ls);
 
-            return json;
-        }
+
+
 
         public bool ValidarUsuario(string xml)
         {
@@ -115,6 +111,22 @@ namespace Muni.Service
             {
                 return null;
             }
+        }
+
+        public string ReadCollectionFuncionarioJson()
+        {
+            List<Funcionario> ls = new FuncionarioCollection().ReadAll();
+            var json = new JavaScriptSerializer().Serialize(ls);
+
+            return json;
+        }
+
+        public string ReadCollectionSolicitudJson()
+        {
+            List<Solicitud> ls = new SolicitudCollection().ReadAll();
+            var json = new JavaScriptSerializer().Serialize(ls);
+
+            return json;
         }
 
     }

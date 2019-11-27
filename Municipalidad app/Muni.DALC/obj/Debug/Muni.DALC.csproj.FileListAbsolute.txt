@@ -36,4 +36,3 @@ C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.csproj.CopyComplete
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.dll
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.pdb
-C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.csprojAssemblyReference.cache
