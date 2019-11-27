@@ -23,5 +23,10 @@ namespace Muni.Service
         [OperationContract]
         string ReadCollectionSolicitudJson();
 
+        [OperationContract]
+        bool ValidarUsuarioJson(string json);
+
+        [OperationContract]
+        string ReadUsuarioJson(string json);
     }
 }

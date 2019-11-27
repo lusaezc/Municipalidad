@@ -12,6 +12,7 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
     <link href="css/style-luchito.css" rel="stylesheet" />
@@ -111,6 +112,7 @@
            al dejarlo se ven los botones para exportar la lista pero no los datos, 
            al sacarlo se ven los datos pero no los botones  --%>
         <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
 
         <!-- Menu Toggle Script -->

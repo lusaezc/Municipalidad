@@ -77,5 +77,45 @@ namespace Muni.Service
             }
         }
 
+
+
+
+
+
+
+        public bool ValidarUsuarioJson(string json)
+        {
+            try
+            {
+                Funcionario u = new JavaScriptSerializer().Deserialize<Funcionario>(json);
+                return u.ValidarUsuario();
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public string ReadUsuarioJson(string json)
+        {
+            try
+            {
+                Funcionario f1 = new JavaScriptSerializer().Deserialize<Funcionario>(json);
+                if (f1.Read())
+                {
+                    var fun1 = new JavaScriptSerializer().Serialize(f1);
+                    return fun1;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
     }
 }

@@ -3,7 +3,6 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
         <script> function alertarme() {
                 let timerInterval

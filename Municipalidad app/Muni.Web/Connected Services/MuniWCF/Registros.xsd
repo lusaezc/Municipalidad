@@ -28,17 +28,57 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SerializarJson">
+  <xs:element name="CreateSolicitudJson">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="obj" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="SerializarJsonResponse">
+  <xs:element name="CreateSolicitudJsonResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="SerializarJsonResult" nillable="true" type="xs:anyType" />
+        <xs:element minOccurs="0" name="CreateSolicitudJsonResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadCollectionSolicitudJson">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadCollectionSolicitudJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReadCollectionSolicitudJsonResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarUsuarioJson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ValidarUsuarioJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ValidarUsuarioJsonResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadUsuarioJson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="json" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ReadUsuarioJsonResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ReadUsuarioJsonResult" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

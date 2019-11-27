@@ -18,6 +18,8 @@ namespace Muni.Web
                 userName1.Text = string.Format("{0} {1} {2}", U1.Nombre, U1.ApellidoP, U1.ApellidoM);
                 fechaCon1.Text = string.Format("{0}", U1.FechaContrato);
             }
+
+
         }
 
 

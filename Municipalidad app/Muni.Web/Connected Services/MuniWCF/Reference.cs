@@ -27,11 +27,29 @@ namespace Muni.Web.MuniWCF {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadUsuario", ReplyAction="http://tempuri.org/IRegistros/ReadUsuarioResponse")]
         System.Threading.Tasks.Task<string> ReadUsuarioAsync(string xml);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/SerializarJson", ReplyAction="http://tempuri.org/IRegistros/SerializarJsonResponse")]
-        object SerializarJson(object obj);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/CreateSolicitudJson", ReplyAction="http://tempuri.org/IRegistros/CreateSolicitudJsonResponse")]
+        bool CreateSolicitudJson(string json);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/SerializarJson", ReplyAction="http://tempuri.org/IRegistros/SerializarJsonResponse")]
-        System.Threading.Tasks.Task<object> SerializarJsonAsync(object obj);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/CreateSolicitudJson", ReplyAction="http://tempuri.org/IRegistros/CreateSolicitudJsonResponse")]
+        System.Threading.Tasks.Task<bool> CreateSolicitudJsonAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadCollectionSolicitudJson", ReplyAction="http://tempuri.org/IRegistros/ReadCollectionSolicitudJsonResponse")]
+        string ReadCollectionSolicitudJson();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadCollectionSolicitudJson", ReplyAction="http://tempuri.org/IRegistros/ReadCollectionSolicitudJsonResponse")]
+        System.Threading.Tasks.Task<string> ReadCollectionSolicitudJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ValidarUsuarioJson", ReplyAction="http://tempuri.org/IRegistros/ValidarUsuarioJsonResponse")]
+        bool ValidarUsuarioJson(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ValidarUsuarioJson", ReplyAction="http://tempuri.org/IRegistros/ValidarUsuarioJsonResponse")]
+        System.Threading.Tasks.Task<bool> ValidarUsuarioJsonAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadUsuarioJson", ReplyAction="http://tempuri.org/IRegistros/ReadUsuarioJsonResponse")]
+        string ReadUsuarioJson(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadUsuarioJson", ReplyAction="http://tempuri.org/IRegistros/ReadUsuarioJsonResponse")]
+        System.Threading.Tasks.Task<string> ReadUsuarioJsonAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -77,12 +95,36 @@ namespace Muni.Web.MuniWCF {
             return base.Channel.ReadUsuarioAsync(xml);
         }
         
-        public object SerializarJson(object obj) {
-            return base.Channel.SerializarJson(obj);
+        public bool CreateSolicitudJson(string json) {
+            return base.Channel.CreateSolicitudJson(json);
         }
         
-        public System.Threading.Tasks.Task<object> SerializarJsonAsync(object obj) {
-            return base.Channel.SerializarJsonAsync(obj);
+        public System.Threading.Tasks.Task<bool> CreateSolicitudJsonAsync(string json) {
+            return base.Channel.CreateSolicitudJsonAsync(json);
+        }
+        
+        public string ReadCollectionSolicitudJson() {
+            return base.Channel.ReadCollectionSolicitudJson();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadCollectionSolicitudJsonAsync() {
+            return base.Channel.ReadCollectionSolicitudJsonAsync();
+        }
+        
+        public bool ValidarUsuarioJson(string json) {
+            return base.Channel.ValidarUsuarioJson(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ValidarUsuarioJsonAsync(string json) {
+            return base.Channel.ValidarUsuarioJsonAsync(json);
+        }
+        
+        public string ReadUsuarioJson(string json) {
+            return base.Channel.ReadUsuarioJson(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadUsuarioJsonAsync(string json) {
+            return base.Channel.ReadUsuarioJsonAsync(json);
         }
     }
 }

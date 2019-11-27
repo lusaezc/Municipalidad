@@ -18,11 +18,29 @@
   <wsdl:message name="IRegistros_ReadUsuario_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadUsuarioResponse" />
   </wsdl:message>
-  <wsdl:message name="IRegistros_SerializarJson_InputMessage">
-    <wsdl:part name="parameters" element="tns:SerializarJson" />
+  <wsdl:message name="IRegistros_CreateSolicitudJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSolicitudJson" />
   </wsdl:message>
-  <wsdl:message name="IRegistros_SerializarJson_OutputMessage">
-    <wsdl:part name="parameters" element="tns:SerializarJsonResponse" />
+  <wsdl:message name="IRegistros_CreateSolicitudJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateSolicitudJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadCollectionSolicitudJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadCollectionSolicitudJson" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadCollectionSolicitudJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadCollectionSolicitudJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ValidarUsuarioJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioJson" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ValidarUsuarioJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ValidarUsuarioJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadUsuarioJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadUsuarioJson" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadUsuarioJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadUsuarioJsonResponse" />
   </wsdl:message>
   <wsdl:portType name="IRegistros">
     <wsdl:operation name="ValidarUsuario">
@@ -33,9 +51,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadUsuario" message="tns:IRegistros_ReadUsuario_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadUsuarioResponse" message="tns:IRegistros_ReadUsuario_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="SerializarJson">
-      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/SerializarJson" message="tns:IRegistros_SerializarJson_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/SerializarJsonResponse" message="tns:IRegistros_SerializarJson_OutputMessage" />
+    <wsdl:operation name="CreateSolicitudJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/CreateSolicitudJson" message="tns:IRegistros_CreateSolicitudJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/CreateSolicitudJsonResponse" message="tns:IRegistros_CreateSolicitudJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadCollectionSolicitudJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadCollectionSolicitudJson" message="tns:IRegistros_ReadCollectionSolicitudJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadCollectionSolicitudJsonResponse" message="tns:IRegistros_ReadCollectionSolicitudJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ValidarUsuarioJson" message="tns:IRegistros_ValidarUsuarioJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ValidarUsuarioJsonResponse" message="tns:IRegistros_ValidarUsuarioJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadUsuarioJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadUsuarioJson" message="tns:IRegistros_ReadUsuarioJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadUsuarioJsonResponse" message="tns:IRegistros_ReadUsuarioJson_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRegistros" type="tns:IRegistros">
@@ -58,8 +88,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="SerializarJson">
-      <soap:operation soapAction="http://tempuri.org/IRegistros/SerializarJson" style="document" />
+    <wsdl:operation name="CreateSolicitudJson">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/CreateSolicitudJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadCollectionSolicitudJson">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/ReadCollectionSolicitudJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ValidarUsuarioJson">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/ValidarUsuarioJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadUsuarioJson">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/ReadUsuarioJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

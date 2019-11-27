@@ -1,6 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MostrarPermisos.aspx.cs" Inherits="Muni.Web.MostrarPermisos" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
         <script> function alertarme() {
                 let timerInterval
