@@ -22,7 +22,6 @@ C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DA
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DALC\bin\Debug\Muni.DALC.pdb
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DALC\bin\Debug\EntityFramework.dll
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DALC\bin\Debug\EntityFramework.xml
-C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.csprojAssemblyReference.cache
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.csproj.CoreCompileInputs.cache
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.csproj.CopyComplete
 C:\Users\nicof\OneDrive\Documents\GitHub\Municipalidad\Municipalidad app\Muni.DALC\obj\Debug\Muni.DALC.dll
