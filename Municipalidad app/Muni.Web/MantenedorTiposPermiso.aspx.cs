@@ -1,19 +1,19 @@
-﻿using Muni.Negocio;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Muni.Negocio;
 
 namespace Muni.Web
 {
-    public partial class MantenedorUnidades : System.Web.UI.Page
+    public partial class MantenedorTiposPermiso : System.Web.UI.Page
     {
         public Funcionario U1 { get { return (Funcionario)Session["_funcionario"]; } set { Session["_funcionario"] = value; } }
 
-        List<Unidad> PermisosColl = new UnidadCollection().ReadAll().OrderBy(e => e.IdUnidad).ToList();
+        List<TipoPermiso> PermisosColl = new TipoPermisoCollection().ReadAll().OrderBy(e => e.IdTipoPermiso).ToList();
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -27,46 +27,46 @@ namespace Muni.Web
         [WebMethod]
         public static object CargarDataTable()
         {
-            List<Unidad> ls = new UnidadCollection().ReadAll().OrderBy(s => s.IdUnidad).ToList();
+            List<TipoPermiso> ls = new TipoPermisoCollection().ReadAll().OrderBy(s => s.IdTipoPermiso).ToList();
             object json = new { data = ls };
             return json;
         }
 
         private void CargarDll()
         {
-            ddlUnidades.DataSource = PermisosColl;
-            ddlUnidades.DataTextField = "Nombre";
-            ddlUnidades.DataValueField = "IdUnidad";
-            ddlUnidades.DataBind();
+            ddlTipoPermiso.DataSource = PermisosColl;
+            ddlTipoPermiso.DataTextField = "Nombre";
+            ddlTipoPermiso.DataValueField = "IdTipoPermiso";
+            ddlTipoPermiso.DataBind();
         }
 
         private void CargarDllEdit()
         {
-            ddlUnidadesEdit.DataSource = PermisosColl;
-            ddlUnidadesEdit.DataTextField = "Nombre";
-            ddlUnidadesEdit.DataValueField = "IdUnidad";
-            ddlUnidadesEdit.DataBind();
+            ddlTipoPermisoEdit.DataSource = PermisosColl;
+            ddlTipoPermisoEdit.DataTextField = "Nombre";
+            ddlTipoPermisoEdit.DataValueField = "IdTipoPermiso";
+            ddlTipoPermisoEdit.DataBind();
         }
 
-        protected void ddlUnidades_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlTipoPermiso_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
 
-        protected void ddlUnidadesEdit_SelectedIndexChanged(object sender, EventArgs e)
+        protected void ddlTipoPermisoEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }
-        
+
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            List<Unidad> listaUnidad = new UnidadCollection().ReadAll().ToList();
-            Unidad unidad = new Unidad();
-            unidad.IdUnidad = listaUnidad.Count();
-            unidad.Nombre = txtNombre.Text;
-
-            if (unidad.Create())
+            List<TipoPermiso> listaTipo = new TipoPermisoCollection().ReadAll().ToList();
+            TipoPermiso tipoPermiso = new TipoPermiso();
+            tipoPermiso.IdTipoPermiso = listaTipo.Count();
+            tipoPermiso.Nombre = txtNombre.Text;
+            tipoPermiso.NumeroDias = int.Parse(txtNroDias.Text);
+            if (tipoPermiso.Create())
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
             }
@@ -85,12 +85,13 @@ namespace Muni.Web
             }
             else
             {
-                int selec = ddlUnidadesEdit.SelectedIndex;
+                int selec = ddlTipoPermisoEdit.SelectedIndex;
 
-                Unidad unidad = new UnidadCollection().ReadAll().First(es => es.IdUnidad == selec);
+                TipoPermiso tipoP = new TipoPermisoCollection().ReadAll().First(es => es.IdTipoPermiso == selec);
 
-                unidad.Nombre = txtNombreEdit.Text;
-                if (unidad.Update())
+                tipoP.Nombre = txtNombreEdit.Text;
+                tipoP.NumeroDias = int.Parse(txtCantidadDias.Text);
+                if (tipoP.Update())
                 {
                     ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionModifi(true)", true);
                 }
@@ -103,10 +104,10 @@ namespace Muni.Web
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            Unidad unidad = new Unidad();
-            unidad.IdUnidad = ddlUnidades.SelectedIndex;
+            TipoPermiso tp = new TipoPermiso();
+            tp.IdTipoPermiso = ddlTipoPermiso.SelectedIndex;
 
-            if (unidad.Delete())
+            if (tp.Delete())
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionDelete(true)", true);
             }
@@ -115,6 +116,5 @@ namespace Muni.Web
                 ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionDelete(false)", true);
             }
         }
-
     }
 }

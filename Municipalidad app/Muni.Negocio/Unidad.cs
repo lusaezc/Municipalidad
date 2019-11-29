@@ -24,7 +24,19 @@ namespace Muni.Negocio
 
         public bool Create()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DALC.UNIDAD_INTERNA u1 = new DALC.UNIDAD_INTERNA();
+                u1.ID_UNIDAD = IdUnidad;
+                u1.NOMBRE = Nombre;
+                CommonBC.Modelo.UNIDAD_INTERNA.Add(u1);
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Read()
@@ -45,12 +57,32 @@ namespace Muni.Negocio
 
         public bool Update()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DALC.UNIDAD_INTERNA u1 = CommonBC.Modelo.UNIDAD_INTERNA.First(u => u.ID_UNIDAD == IdUnidad);
+                u1.NOMBRE = Nombre;
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Delete()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DALC.UNIDAD_INTERNA u1 = CommonBC.Modelo.UNIDAD_INTERNA.First(u => u.ID_UNIDAD == IdUnidad);
+                CommonBC.Modelo.UNIDAD_INTERNA.Remove(u1);
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
     }
 }

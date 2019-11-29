@@ -10,7 +10,7 @@
 namespace Muni.Web {
     
     
-    public partial class MantenedorUnidades {
+    public partial class MantenedorTiposPermiso {
         
         /// <summary>
         /// Control txtNombre.
@@ -20,6 +20,15 @@ namespace Muni.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombre;
+        
+        /// <summary>
+        /// Control txtNroDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtNroDias;
         
         /// <summary>
         /// Control btnCancelar.
@@ -40,13 +49,13 @@ namespace Muni.Web {
         protected global::System.Web.UI.WebControls.Button btnConfirmar;
         
         /// <summary>
-        /// Control ddlUnidadesEdit.
+        /// Control ddlTipoPermisoEdit.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUnidadesEdit;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoPermisoEdit;
         
         /// <summary>
         /// Control txtNombreEdit.
@@ -56,6 +65,15 @@ namespace Muni.Web {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNombreEdit;
+        
+        /// <summary>
+        /// Control txtCantidadDias.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtCantidadDias;
         
         /// <summary>
         /// Control btnCancelarModificar.
@@ -76,13 +94,13 @@ namespace Muni.Web {
         protected global::System.Web.UI.WebControls.Button btnConfirmarModificar;
         
         /// <summary>
-        /// Control ddlUnidades.
+        /// Control ddlTipoPermiso.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlUnidades;
+        protected global::System.Web.UI.WebControls.DropDownList ddlTipoPermiso;
         
         /// <summary>
         /// Control btnCancelarEliminar.

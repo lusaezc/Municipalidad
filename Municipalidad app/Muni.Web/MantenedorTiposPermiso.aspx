@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MantenedorUnidades.aspx.cs" Inherits="Muni.Web.MantenedorUnidades" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MantenedorTiposPermiso.aspx.cs" Inherits="Muni.Web.MantenedorTiposPermiso" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
     <script>  function verificacionNull() {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Error!',
-                    text: 'Debe ingresar un nombre',
-                })
-            }
+            Swal.fire({
+                type: 'error',
+                title: 'Error!',
+                text: 'Debe ingresar un nombre',
+            })
+        }
     </script>
 
     <script>  function verificacion(valido) {
@@ -18,13 +18,13 @@
                 Swal.fire({
                     type: 'success',
                     title: 'Wouh...',
-                    text: 'La unidad fue generada exitosamente',
+                    text: 'El tipo permiso fue generado exitosamente',
                 })
             } else {
                 Swal.fire({
                     type: 'error',
                     title: 'Oops...',
-                    text: 'La unidad no pudo ser generada',
+                    text: 'El tipo permiso no pudo ser generado',
                 })
             }
         }
@@ -35,13 +35,13 @@
                 Swal.fire({
                     type: 'success',
                     title: 'Wouh...',
-                    text: 'La unidad fue modificada exitosamente',
+                    text: 'El tipo permiso fue modificado exitosamente',
                 })
             } else {
                 Swal.fire({
                     type: 'error',
                     title: 'Oops...',
-                    text: 'La unidad no pudo ser modificada',
+                    text: 'El tipo permiso no pudo ser modificado',
                 })
             }
         }
@@ -52,13 +52,13 @@
                 Swal.fire({
                     type: 'success',
                     title: 'Wouh...',
-                    text: 'La unidad fue eliminada exitosamente',
+                    text: 'El tipo permiso fue eliminado exitosamente',
                 })
             } else {
                 Swal.fire({
                     type: 'error',
                     title: 'Oops...',
-                    text: 'La unidad no pudo ser elimnada',
+                    text: 'El tipo permiso no pudo ser elimnado',
                 })
             }
         }
@@ -93,14 +93,16 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3 class="modal-title">Ingresar una nueva unidad</h3>
+                                    <h3 class="modal-title">Ingresar un nuevo tipo de permiso</h3>
                                 </div>
                                 <div class="modal-body">
-                                    Nombre de la nueva unidad:
+                                    Nombre del nuevo tipo de permiso
                             <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox>
+                                    Cantidad de días que tendra
+                                    <asp:TextBox ID="txtNroDias" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnCancelar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorUnidades.aspx" />
+                                    <asp:Button ID="btnCancelar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorTiposPermiso.aspx" />
                                     <asp:Button ID="btnConfirmar" runat="server" class="btn btn-success" Text="Confirmar" OnClick="btnConfirmar_Click" />
                                 </div>
                             </div>
@@ -111,18 +113,21 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3 class="modal-title">Elija la unidad que desea modificar</h3>
+                                    <h3 class="modal-title">Elija el tipo de permiso que desea modificar</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <center><asp:DropDownList ID="ddlUnidadesEdit" runat="server" Width="215px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlUnidadesEdit_SelectedIndexChanged">
+                                    <center><asp:DropDownList ID="ddlTipoPermisoEdit" runat="server" Width="215px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlTipoPermisoEdit_SelectedIndexChanged">
                                         </asp:DropDownList></center>
                                     <br />
                                     <br />
+
+                                    nombre del nuevo tipo de permiso <asp:TextBox ID="txtNombreEdit" runat="server"></asp:TextBox>
                                     
-                                    Nuevo nombre: <asp:TextBox ID="txtNombreEdit" runat="server"></asp:TextBox>
+                                    Cantidad de días <asp:TextBox ID="txtCantidadDias" runat="server"></asp:TextBox>
+                                    
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnCancelarModificar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorUnidades.aspx" />
+                                    <asp:Button ID="btnCancelarModificar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorTiposPermiso.aspx" />
                                     <asp:Button ID="btnConfirmarModificar" runat="server" class="btn btn-success" Text="Confirmar" OnClick="btnConfirmarModificar_Click" />
                                 </div>
                             </div>
@@ -134,14 +139,14 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h3 class="modal-title">Seleccione la unidad que desea eliminar</h3>
+                                    <h3 class="modal-title">Seleccione el tipo de permiso que desea eliminar</h3>
                                 </div>
                                 <div class="modal-body">
-                                    <center><asp:DropDownList ID="ddlUnidades" runat="server" Width="215px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlUnidades_SelectedIndexChanged">
+                                    <center><asp:DropDownList ID="ddlTipoPermiso" runat="server" Width="215px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlTipoPermiso_SelectedIndexChanged">
                                         </asp:DropDownList></center>
                                 </div>
                                 <div class="modal-footer">
-                                    <asp:Button ID="btnCancelarEliminar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorUnidades.aspx" />
+                                    <asp:Button ID="btnCancelarEliminar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorTiposPermiso.aspx" />
                                     <asp:Button ID="btnEliminar" runat="server" class="btn btn-success" Text="Confirmar" OnClick="btnEliminar_Click" />
                                 </div>
                             </div>
@@ -154,8 +159,9 @@
                     <table id="DataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>Id Unidad</th>
+                                <th>Id del tipo de permiso</th>
                                 <th>Nombre</th>
+                                <th>Cantidad de días</th>
                             </tr>
                         </thead>
                     </table>
@@ -183,9 +189,8 @@
     <script src="Js/Data.js"></script>
     <script>
         $(function () {
-            unidades();
+            tipoPermiso();
         });
     </script>
-
 
 </asp:Content>

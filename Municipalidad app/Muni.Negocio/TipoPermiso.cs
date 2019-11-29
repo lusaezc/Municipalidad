@@ -27,7 +27,20 @@ namespace Muni.Negocio
 
         public bool Create()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DALC.TIPO_PERMISO tp1 = new DALC.TIPO_PERMISO();
+                tp1.ID_TIPO_PERMISO = IdTipoPermiso;
+                tp1.NOMBRE = Nombre;
+                tp1.NRO_DIAS = NumeroDias;
+                CommonBC.Modelo.TIPO_PERMISO.Add(tp1);
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
 
@@ -50,14 +63,33 @@ namespace Muni.Negocio
 
         public bool Update()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DALC.TIPO_PERMISO tp1 = CommonBC.Modelo.TIPO_PERMISO.First(u => u.ID_TIPO_PERMISO == IdTipoPermiso);
+                tp1.NOMBRE = Nombre;
+                tp1.NRO_DIAS = NumeroDias;
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
 
         public bool Delete()
         {
-            throw new NotImplementedException();
+            try
+            {
+                DALC.TIPO_PERMISO u1 = CommonBC.Modelo.TIPO_PERMISO.First(u => u.ID_TIPO_PERMISO == IdTipoPermiso);
+                CommonBC.Modelo.TIPO_PERMISO.Remove(u1);
+                CommonBC.Modelo.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
         }
-
-
     }
 }
