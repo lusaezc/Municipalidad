@@ -31,8 +31,6 @@
     <form id="form1" runat="server">
         <div class="d-flex" id="wrapper" style="background-color: #e1e1e1;">
 
-
-
             <!-- Sidebar -->
             <div class="bg-light border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading">Panel </div>
@@ -65,13 +63,6 @@
                 </asp:Panel>
             </asp:ContentPlaceHolder>
         </div>
-
-        <%-- <script src="vendor/jquery/jquery.min.js"></script> 
-           al dejarlo se ven los botones para exportar la lista pero no los datos, 
-           al sacarlo se ven los datos pero no los botones  --%>
-
-
-
 
         <!-- Menu Toggle Script -->
         <script>

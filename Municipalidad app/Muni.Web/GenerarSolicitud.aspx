@@ -2,6 +2,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+
     <script> function alertarme() {
             let timerInterval
             Swal.fire({
@@ -49,14 +51,14 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="table-responsive">
-                        <br />
+                        <center><br />
                         <h2>
                             <asp:Label ID="lblTitulo" runat="server"></asp:Label>
                         </h2>
                         <br />
                         <br />
                         <asp:Label ID="Label1" runat="server" Text="Tipo Permiso:"></asp:Label>
-                        <asp:DropDownList ID="ddlCategoria" runat="server" Width="215px" CssClass="dropdown" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="ddlCategoria" runat="server" Width="215px" CssClass="form-control" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
                         </asp:DropDownList>
                         <p>
                             &nbsp;
@@ -65,13 +67,14 @@
                             &nbsp;
                         </p>
                         <div class="date-picker" >
-                            <asp:Calendar ID="Calendar1" runat="server" OnDayRender="RenderDays1" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" OnSelectionChanged="Calendar1_SelectionChanged" Visible="False" Width="350px">
-                                <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                                <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                                <OtherMonthDayStyle ForeColor="#999999" />
-                                <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                                <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                                <TodayDayStyle BackColor="#CCCCCC" />
+                            <asp:Calendar ID="Calendar1" runat="server" OnDayRender="RenderDays1" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="200px" OnSelectionChanged="Calendar1_SelectionChanged" Visible="False" Width="220px" DayNameFormat="Shortest" FirstDayOfWeek="Monday" ShowGridLines="True">
+                                <DayHeaderStyle Font-Bold="True" BackColor="#FFCC66" Height="1px" />
+                                <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
+                                <OtherMonthDayStyle ForeColor="#CC9966" />
+                                <SelectedDayStyle BackColor="#CCCCFF" Font-Bold="True" />
+                                <SelectorStyle BackColor="#FFCC66" />
+                                <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" ForeColor="#FFFFCC" />
+                                <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
                             </asp:Calendar>
                         </div>
 
@@ -79,20 +82,21 @@
                         <asp:Label ID="lblCalendar" runat="server"></asp:Label>
                         <br />
                         <br />
-                        <asp:Calendar ID="Calendar2" runat="server" OnDayRender="RenderDays2" BackColor="White" BorderColor="White" BorderWidth="1px" Font-Names="Verdana" Font-Size="9pt" ForeColor="Black" Height="190px" NextPrevFormat="FullMonth" OnSelectionChanged="Calendar2_SelectionChanged" Visible="False" Width="350px">
-                            <DayHeaderStyle Font-Bold="True" Font-Size="8pt" />
-                            <NextPrevStyle Font-Bold="True" Font-Size="8pt" ForeColor="#333333" VerticalAlign="Bottom" />
-                            <OtherMonthDayStyle ForeColor="#999999" />
-                            <SelectedDayStyle BackColor="#333399" ForeColor="White" />
-                            <TitleStyle BackColor="White" BorderColor="Black" BorderWidth="4px" Font-Bold="True" Font-Size="12pt" ForeColor="#333399" />
-                            <TodayDayStyle BackColor="#CCCCCC" />
+                        <asp:Calendar ID="Calendar2" runat="server" OnDayRender="RenderDays2" BackColor="#FFFFCC" BorderColor="#FFCC66" BorderWidth="1px" Font-Names="Verdana" Font-Size="8pt" ForeColor="#663399" Height="200px" OnSelectionChanged="Calendar2_SelectionChanged" Visible="False" Width="220px" DayNameFormat="Shortest" ShowGridLines="True">
+                            <DayHeaderStyle Font-Bold="True" BackColor="#FFCC66" Height="1px" />
+                            <NextPrevStyle Font-Size="9pt" ForeColor="#FFFFCC" />
+                            <OtherMonthDayStyle ForeColor="#CC9966" />
+                            <SelectedDayStyle BackColor="#CCCCFF" Font-Bold="True" />
+                            <SelectorStyle BackColor="#FFCC66" />
+                            <TitleStyle BackColor="#990000" Font-Bold="True" Font-Size="9pt" ForeColor="#FFFFCC" />
+                            <TodayDayStyle BackColor="#FFCC66" ForeColor="White" />
                         </asp:Calendar>
                         <br />
                         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Confirmar" Visible="False" />
+                        </center>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 </asp:Content>

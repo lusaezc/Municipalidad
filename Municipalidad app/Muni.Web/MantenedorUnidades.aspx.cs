@@ -63,7 +63,7 @@ namespace Muni.Web
         {
             List<Unidad> listaUnidad = new UnidadCollection().ReadAll().ToList();
             Unidad unidad = new Unidad();
-            unidad.IdUnidad = listaUnidad.Count();
+            unidad.IdUnidad = listaUnidad.Max(iu => iu.IdUnidad) +1;
             unidad.Nombre = txtNombre.Text;
 
             if (unidad.Create())

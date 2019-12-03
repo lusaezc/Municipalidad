@@ -63,7 +63,7 @@ namespace Muni.Web
         {
             List<TipoPermiso> listaTipo = new TipoPermisoCollection().ReadAll().ToList();
             TipoPermiso tipoPermiso = new TipoPermiso();
-            tipoPermiso.IdTipoPermiso = listaTipo.Count();
+            tipoPermiso.IdTipoPermiso = listaTipo.Max(es => es.IdTipoPermiso)+1;
             tipoPermiso.Nombre = txtNombre.Text;
             tipoPermiso.NumeroDias = int.Parse(txtNroDias.Text);
             if (tipoPermiso.Create())

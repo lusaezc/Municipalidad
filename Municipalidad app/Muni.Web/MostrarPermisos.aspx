@@ -1,27 +1,28 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="MostrarPermisos.aspx.cs" Inherits="Muni.Web.MostrarPermisos" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-        <script> function alertarme() {
-                let timerInterval
-                Swal.fire({
-                    type: 'warning',
-                    title: 'Pagina denegada para este usuario!',
-                    html: 'Seras redirigido en <b></b> Milisegundos.',
-                    timer: 3000,
-                    timerProgressBar: true,
-                    onBeforeOpen: () => {
-                        Swal.showLoading()
-                        timerInterval = setInterval(() => {
-                            Swal.getContent().querySelector('b')
-                                .textContent = Swal.getTimerLeft()
-                        }, 100)
-                    },
-                    onClose: () => {
-                        window.location.replace("http://localhost:57203/Inicio.aspx");
-                    }
-                })
-            }
-        </script>
+    <script> function alertarme() {
+            let timerInterval
+            Swal.fire({
+                type: 'warning',
+                title: 'Pagina denegada para este usuario!',
+                html: 'Seras redirigido en <b></b> Milisegundos.',
+                timer: 3000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('b')
+                            .textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                onClose: () => {
+                    window.location.replace("http://localhost:57203/Inicio.aspx");
+                }
+            })
+        }
+    </script>
 
     <script>  function verificacion(valido) {
             if (valido) {
@@ -40,10 +41,36 @@
         }
     </script>
 
+    <script>  function verificacionModifi(valido) {
+            if (valido) {
+                Swal.fire({
+                    type: 'success',
+                    title: 'Wouh...',
+                    text: 'El permiso fue modificada exitosamente',
+                })
+            } else {
+                Swal.fire({
+                    type: 'error',
+                    title: 'Oops...',
+                    text: 'El permiso no pudo ser modificada',
+                })
+            }
+        }
+    </script>
+
+    <script>  function verificacionNull() {
+            Swal.fire({
+                type: 'error',
+                title: 'Error!',
+                text: 'Debe ingresar un id valido y una observación',
+            })
+        }
+    </script>
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <!-- Required meta tags -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="shortcut icon" href="#" />
@@ -67,6 +94,31 @@
         <div class="card card-luchito">
             <div class="row">
                 <div class="col-lg-12">
+                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#myModal2">Modificar</a>
+                    <div class="modal fade" id="myModal2">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Ingrese el Id del permiso que desea modificar</h3>
+                                </div>
+                                <div class="modal-body">
+                                    Id del permiso:
+                            <asp:TextBox ID="txtId" runat="server"></asp:TextBox>
+                                    <br />
+                                    <br />
+
+                                    Nuevas observaciones:
+                                    <asp:TextBox ID="txtNombreEdit" runat="server" Height="136px" Width="338px"></asp:TextBox>
+                                </div>
+                                <div class="modal-footer">
+                                    <asp:Button ID="btnCancelarModificar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorUnidades.aspx" />
+                                    <asp:Button ID="btnConfirmarModificar" runat="server" class="btn btn-success" Text="Confirmar" OnClick="btnConfirmarModificar_Click" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
                     <div class="table-responsive">
                         <table id="DataTable" class="table table-striped table-bordered" cellspacing="0" width="100%">
                             <thead>
@@ -75,7 +127,7 @@
                                     <th>Observaciones</th>
                                     <th>Cantidad de Dias</th>
                                     <th>Pendiente</th>
-                                    <th>Id Solicitud</th>                                    
+                                    <th>Id Solicitud</th>
                                     <th>Codigo de Verificacion</th>
                                 </tr>
                             </thead>

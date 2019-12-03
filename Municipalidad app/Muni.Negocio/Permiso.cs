@@ -130,6 +130,7 @@ namespace Muni.Negocio
             try
             {
                 DALC.PERMISO s1 = CommonBC.Modelo.PERMISO.First(s => s.ID_PERMISO == IdPermiso);
+                s1.OBSERVACIONES = Observaciones;
                 s1.PENDIENTE = Pendiente;
                 CommonBC.Modelo.SaveChanges();
                 return true;

@@ -51,11 +51,25 @@ namespace Muni.Web
 
                 List<Permiso> ls = new PermisoCollection().ReadAll().ToList();
 
+                int workDays = 0;
+                int start = s.FechaInicio.Day;
+                int end = s.FechaFin.Day;
+                DateTime fecha = s.FechaInicio;
+
+                while (start != end)
+                {
+                    if (fecha.DayOfWeek == DayOfWeek.Saturday || fecha.DayOfWeek == DayOfWeek.Sunday)
+                    {
+                        workDays++;
+                    }
+                    fecha = fecha.AddDays(1);
+                    start++;
+                }
 
 
                 p.IdPermiso = s.IdSolicitud;
                 p.Observaciones = txtObservaciones.Text;
-                p.CantidadDias = s.FechaFin.Day - s.FechaInicio.Day;
+                p.CantidadDias = s.FechaFin.Day - s.FechaInicio.Day - workDays + 1;
                 p.Pendiente = 1;
                 p.IdSolicitud = num;
                 p.CodVerificacion = new Random().Next(10000, 100000);
@@ -72,5 +86,6 @@ namespace Muni.Web
                 }
             }
         }
+
     }
 }

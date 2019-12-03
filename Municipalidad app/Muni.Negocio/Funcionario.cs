@@ -94,6 +94,8 @@ namespace Muni.Negocio
                 u.ID_UNIDAD = IdUnidad;
                 u.ID_ROL = IdRol;
                 u.MOROSO = Moroso.ToString();
+                u.DIAS_ADMINISTRATIVOS = DiasAdministrativos;
+                u.DIAS_FERIADO_ANUAL = DiasFeriadoLegal;
 
                 CommonBC.Modelo.SaveChanges();
                 return true;

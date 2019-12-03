@@ -57,5 +57,29 @@ namespace Muni.Web
             }
             ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
         }
+
+        protected void btnConfirmarModificar_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtNombreEdit.Text) || string.IsNullOrEmpty(txtId.Text))
+            {
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionNull(true)", true);
+            }
+            else
+            {
+                int selec = int.Parse(txtId.Text);
+
+                Permiso unidad = new PermisoCollection().ReadAll().First(es => es.IdPermiso == selec);
+
+                unidad.Observaciones = txtNombreEdit.Text;
+                if (unidad.Update())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionModifi(true)", true);
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionModifi(false)", true);
+                }
+            }
+        }
     }
 }

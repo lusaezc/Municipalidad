@@ -184,6 +184,10 @@
     <Content Include="img\img_btn\correo.png" />
     <Content Include="img\img_btn\pdf.png" />
     <Content Include="img\Login.jpg" />
+    <Content Include="Index\jquery.backtotop.js" />
+    <Content Include="Index\jquery.min.js" />
+    <Content Include="Index\jquery.mobilemenu.js" />
+    <Content Include="Index\layout.css" />
     <Content Include="Inicio.aspx" />
     <Content Include="Js\Data.js" />
     <Content Include="Login.aspx" />
