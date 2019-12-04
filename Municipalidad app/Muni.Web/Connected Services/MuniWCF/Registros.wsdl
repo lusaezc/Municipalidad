@@ -48,6 +48,36 @@
   <wsdl:message name="IRegistros_ReadCollectionFuncionarioJson_OutputMessage">
     <wsdl:part name="parameters" element="tns:ReadCollectionFuncionarioJsonResponse" />
   </wsdl:message>
+  <wsdl:message name="IRegistros_UpdateSolicitud_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSolicitud" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_UpdateSolicitud_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateSolicitudResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadSolicitudJava_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSolicitudJava" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadSolicitudJava_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadSolicitudJavaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadPendientes_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadPendientes" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadPendientes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadPendientesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_CreatePermisoJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePermisoJson" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_CreatePermisoJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreatePermisoJsonResponse" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadPermisoJson_InputMessage">
+    <wsdl:part name="parameters" element="tns:ReadPermisoJson" />
+  </wsdl:message>
+  <wsdl:message name="IRegistros_ReadPermisoJson_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ReadPermisoJsonResponse" />
+  </wsdl:message>
   <wsdl:portType name="IRegistros">
     <wsdl:operation name="ValidarUsuario">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ValidarUsuario" message="tns:IRegistros_ValidarUsuario_InputMessage" />
@@ -76,6 +106,26 @@
     <wsdl:operation name="ReadCollectionFuncionarioJson">
       <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJson" message="tns:IRegistros_ReadCollectionFuncionarioJson_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJsonResponse" message="tns:IRegistros_ReadCollectionFuncionarioJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSolicitud">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/UpdateSolicitud" message="tns:IRegistros_UpdateSolicitud_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/UpdateSolicitudResponse" message="tns:IRegistros_UpdateSolicitud_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadSolicitudJava">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadSolicitudJava" message="tns:IRegistros_ReadSolicitudJava_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadSolicitudJavaResponse" message="tns:IRegistros_ReadSolicitudJava_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPendientes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadPendientes" message="tns:IRegistros_ReadPendientes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadPendientesResponse" message="tns:IRegistros_ReadPendientes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreatePermisoJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/CreatePermisoJson" message="tns:IRegistros_CreatePermisoJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/CreatePermisoJsonResponse" message="tns:IRegistros_CreatePermisoJson_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ReadPermisoJson">
+      <wsdl:input wsaw:Action="http://tempuri.org/IRegistros/ReadPermisoJson" message="tns:IRegistros_ReadPermisoJson_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IRegistros/ReadPermisoJsonResponse" message="tns:IRegistros_ReadPermisoJson_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IRegistros" type="tns:IRegistros">
@@ -136,6 +186,51 @@
     </wsdl:operation>
     <wsdl:operation name="ReadCollectionFuncionarioJson">
       <soap:operation soapAction="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateSolicitud">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/UpdateSolicitud" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadSolicitudJava">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/ReadSolicitudJava" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPendientes">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/ReadPendientes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreatePermisoJson">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/CreatePermisoJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ReadPermisoJson">
+      <soap:operation soapAction="http://tempuri.org/IRegistros/ReadPermisoJson" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

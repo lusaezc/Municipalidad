@@ -21,6 +21,7 @@ namespace Muni.Web
             {
                 CargarDll();
                 CargarDllEdit();
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
             }
         }
 
@@ -61,34 +62,38 @@ namespace Muni.Web
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            List<TipoPermiso> listaTipo = new TipoPermisoCollection().ReadAll().ToList();
-            TipoPermiso tipoPermiso = new TipoPermiso();
-            tipoPermiso.IdTipoPermiso = listaTipo.Max(es => es.IdTipoPermiso)+1;
-            tipoPermiso.Nombre = txtNombre.Text;
-            tipoPermiso.NumeroDias = int.Parse(txtNroDias.Text);
-            if (tipoPermiso.Create())
+            if (string.IsNullOrEmpty(txtNombre.Text) || string.IsNullOrEmpty(txtNroDias.Text))
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionNull(true)", true);
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
+                List<TipoPermiso> listaTipo = new TipoPermisoCollection().ReadAll().ToList();
+                TipoPermiso tipoPermiso = new TipoPermiso();
+                tipoPermiso.IdTipoPermiso = listaTipo.Max(es => es.IdTipoPermiso) + 1;
+                tipoPermiso.Nombre = txtNombre.Text;
+                tipoPermiso.NumeroDias = int.Parse(txtNroDias.Text);
+                if (tipoPermiso.Create())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
+                }
             }
-
         }
 
         protected void btnConfirmarModificar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtNombreEdit.Text))
+            if (string.IsNullOrEmpty(txtNombreEdit.Text) && string.IsNullOrEmpty(txtCantidadDias.Text))
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionNull(true)", true);
             }
             else
             {
                 int selec = ddlTipoPermisoEdit.SelectedIndex;
-
                 TipoPermiso tipoP = new TipoPermisoCollection().ReadAll().First(es => es.IdTipoPermiso == selec);
-
                 tipoP.Nombre = txtNombreEdit.Text;
                 tipoP.NumeroDias = int.Parse(txtCantidadDias.Text);
                 if (tipoP.Update())
@@ -106,7 +111,6 @@ namespace Muni.Web
         {
             TipoPermiso tp = new TipoPermiso();
             tp.IdTipoPermiso = ddlTipoPermiso.SelectedIndex;
-
             if (tp.Delete())
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionDelete(true)", true);

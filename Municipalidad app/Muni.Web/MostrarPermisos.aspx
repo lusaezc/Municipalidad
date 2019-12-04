@@ -2,28 +2,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 
-    <script> function alertarme() {
-            let timerInterval
-            Swal.fire({
-                type: 'warning',
-                title: 'Pagina denegada para este usuario!',
-                html: 'Seras redirigido en <b></b> Milisegundos.',
-                timer: 3000,
-                timerProgressBar: true,
-                onBeforeOpen: () => {
-                    Swal.showLoading()
-                    timerInterval = setInterval(() => {
-                        Swal.getContent().querySelector('b')
-                            .textContent = Swal.getTimerLeft()
-                    }, 100)
-                },
-                onClose: () => {
-                    window.location.replace("http://localhost:57203/Inicio.aspx");
-                }
-            })
-        }
-    </script>
-
     <script>  function verificacion(valido) {
             if (valido) {
                 Swal.fire({

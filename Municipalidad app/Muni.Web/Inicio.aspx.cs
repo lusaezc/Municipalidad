@@ -17,7 +17,7 @@ namespace MuniWeb
         {
             if (!IsPostBack)
             {
-                List<Solicitud> solicitudes = new SolicitudCollection().ReadAll().Where(p => p.Rut == U1.Rut && p.FechaFin.Day < DateTime.Today.Day+1).ToList();
+                List<Solicitud> solicitudes = new SolicitudCollection().ReadAll().Where(p => p.Rut == U1.Rut && p.FechaFin <= DateTime.Today.AddDays(1)).ToList();
                 List<Permiso> permisos = new PermisoCollection().ReadAll().Where(p => p.Rut == U1.Rut && p.Pendiente == 1).ToList();
                 lblinfo1.Text = string.Format("{0}", U1.TipoUsuario);
                 lblinfo0.Text = string.Format("{0} {1} {2}", U1.Nombre, U1.ApellidoP, U1.ApellidoM);
@@ -28,7 +28,7 @@ namespace MuniWeb
                 {
                     U1.Moroso = 1;
                 }
-                if (permisos.Count() > 0)
+                if (permisos.Count() > 0 && solicitudes.Count() > 0)
                 {
                     lblAdvertencia.Text = string.Format("Usted tiene {0} permiso pendiente",permisos.Count());
                     btnVerif.Visible = true;

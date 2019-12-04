@@ -4,13 +4,36 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <script> function alertarme() {
+            let timerInterval
+            Swal.fire({
+                type: 'warning',
+                title: 'Pagina denegada para este usuario!',
+                html: 'Seras redirigido en <b></b> Milisegundos.',
+                timer: 3000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('b')
+                            .textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                onClose: () => {
+                    window.location.replace("http://localhost:57203/Inicio.aspx");
+                }
+            })
+        }
+    </script>
+
+
     <script>  function verificacionNull() {
-                Swal.fire({
-                    type: 'error',
-                    title: 'Error!',
-                    text: 'Debe ingresar un nombre',
-                })
-            }
+            Swal.fire({
+                type: 'error',
+                title: 'Error!',
+                text: 'Debe ingresar un nombre',
+            })
+        }
     </script>
 
     <script>  function verificacion(valido) {
@@ -118,8 +141,9 @@
                                         </asp:DropDownList></center>
                                     <br />
                                     <br />
-                                    
-                                    Nuevo nombre: <asp:TextBox ID="txtNombreEdit" runat="server"></asp:TextBox>
+
+                                    Nuevo nombre:
+                                    <asp:TextBox ID="txtNombreEdit" runat="server"></asp:TextBox>
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button ID="btnCancelarModificar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorUnidades.aspx" />

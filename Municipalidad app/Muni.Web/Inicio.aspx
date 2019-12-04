@@ -40,7 +40,7 @@
                 <div class="col-12">
                     <div class="card text-center card-luchito">
                         <div class="card-body py-4">
-                            <img class="profile-picture rounded-circle" src="https://s3-us-west-1.amazonaws.com/co-directory-images/patricio-ogaz-8a635a30.jpg" />
+                            <img class="profile-picture rounded-circle"/>
                             <h2 class="text-dark h5 font-weight-bold mt-4 mb-1">
                                 <asp:Label ID="lblinfo0" runat="server"></asp:Label>
                             </h2>

@@ -31,5 +31,15 @@ namespace Muni.Service
 
         [OperationContract]
         string ReadCollectionFuncionarioJson();
+        [OperationContract]
+        bool UpdateSolicitud(string json);
+        [OperationContract]
+        string ReadSolicitudJava(string json);
+        [OperationContract]
+        string ReadPendientes();
+        [OperationContract]
+        bool CreatePermisoJson(string json);
+        [OperationContract]
+        string ReadPermisoJson(string json);
     }
 }

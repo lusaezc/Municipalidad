@@ -24,23 +24,15 @@ namespace Muni.Negocio
             {
                 if (Estado == 0)
                 {
-                    estadoStr = string.Format("pendiente");
+                    estadoStr = string.Format("solicitado");
                 }
-                if (Estado == 1)
+                else if (Estado == 1)
                 {
                     estadoStr = string.Format("rechazado");
                 }
-                else if (Estado == 2)
-                {
-                    estadoStr = string.Format("autorizado");
-                }
-                else if (Estado == 3)
-                {
-                    estadoStr = string.Format("firmado");
-                }
                 else
                 {
-                    estadoStr = string.Format("solicitado");
+                    estadoStr = string.Format("autorizado");
                 }
                 return estadoStr;
             }

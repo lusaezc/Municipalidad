@@ -58,7 +58,7 @@
                         <br />
                         <br />
                         <asp:Label ID="Label1" runat="server" Text="Tipo Permiso:"></asp:Label>
-                        <asp:DropDownList ID="ddlCategoria" runat="server" Width="215px" CssClass="form-control" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true">
+                        <asp:DropDownList ID="ddlCategoria" runat="server"  Width="215px" CssClass="form-control" Font-Names="Rockwell" OnSelectedIndexChanged="ddlCategoria_SelectedIndexChanged" AutoPostBack="true" placeholder="seleccione">
                         </asp:DropDownList>
                         <p>
                             &nbsp;

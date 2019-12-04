@@ -21,6 +21,7 @@ namespace Muni.Web
             {
                 CargarDll();
                 CargarDllEdit();
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
             }
         }
 
@@ -61,20 +62,28 @@ namespace Muni.Web
 
         protected void btnConfirmar_Click(object sender, EventArgs e)
         {
-            List<Unidad> listaUnidad = new UnidadCollection().ReadAll().ToList();
-            Unidad unidad = new Unidad();
-            unidad.IdUnidad = listaUnidad.Max(iu => iu.IdUnidad) +1;
-            unidad.Nombre = txtNombre.Text;
-
-            if (unidad.Create())
+            if (string.IsNullOrEmpty(txtNombre.Text))
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
+                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionNull(true)", true);
             }
             else
             {
-                ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
-            }
+                List<Unidad> listaUnidad = new UnidadCollection().ReadAll().ToList();
+                Unidad unidad = new Unidad();
+                unidad.IdUnidad = listaUnidad.Max(iu => iu.IdUnidad) + 1;
 
+
+                unidad.Nombre = txtNombre.Text;
+
+                if (unidad.Create())
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
+                }
+                else
+                {
+                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
+                }
+            }
         }
 
         protected void btnConfirmarModificar_Click(object sender, EventArgs e)
@@ -86,9 +95,7 @@ namespace Muni.Web
             else
             {
                 int selec = ddlUnidadesEdit.SelectedIndex;
-
                 Unidad unidad = new UnidadCollection().ReadAll().First(es => es.IdUnidad == selec);
-
                 unidad.Nombre = txtNombreEdit.Text;
                 if (unidad.Update())
                 {
@@ -105,7 +112,6 @@ namespace Muni.Web
         {
             Unidad unidad = new Unidad();
             unidad.IdUnidad = ddlUnidades.SelectedIndex;
-
             if (unidad.Delete())
             {
                 ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacionDelete(true)", true);

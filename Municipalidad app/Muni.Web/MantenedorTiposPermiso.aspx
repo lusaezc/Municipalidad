@@ -4,11 +4,34 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
+    <script> function alertarme() {
+            let timerInterval
+            Swal.fire({
+                type: 'warning',
+                title: 'Pagina denegada para este usuario!',
+                html: 'Seras redirigido en <b></b> Milisegundos.',
+                timer: 3000,
+                timerProgressBar: true,
+                onBeforeOpen: () => {
+                    Swal.showLoading()
+                    timerInterval = setInterval(() => {
+                        Swal.getContent().querySelector('b')
+                            .textContent = Swal.getTimerLeft()
+                    }, 100)
+                },
+                onClose: () => {
+                    window.location.replace("http://localhost:57203/Inicio.aspx");
+                }
+            })
+        }
+    </script>
+
+
     <script>  function verificacionNull() {
             Swal.fire({
                 type: 'error',
                 title: 'Error!',
-                text: 'Debe ingresar un nombre',
+                text: 'Debe rellenar todos los campos',
             })
         }
     </script>
@@ -121,10 +144,12 @@
                                     <br />
                                     <br />
 
-                                    nombre del nuevo tipo de permiso <asp:TextBox ID="txtNombreEdit" runat="server"></asp:TextBox>
-                                    
-                                    Cantidad de días <asp:TextBox ID="txtCantidadDias" runat="server"></asp:TextBox>
-                                    
+                                    nombre del nuevo tipo de permiso
+                                    <asp:TextBox ID="txtNombreEdit" runat="server"></asp:TextBox>
+
+                                    Cantidad de días
+                                    <asp:TextBox ID="txtCantidadDias" runat="server"></asp:TextBox>
+
                                 </div>
                                 <div class="modal-footer">
                                     <asp:Button ID="btnCancelarModificar" runat="server" class="btn btn-default" Text="Cancelar" href="MantenedorTiposPermiso.aspx" />

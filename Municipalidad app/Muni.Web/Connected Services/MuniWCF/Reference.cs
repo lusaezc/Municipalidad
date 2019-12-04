@@ -56,6 +56,36 @@ namespace Muni.Web.MuniWCF {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJson", ReplyAction="http://tempuri.org/IRegistros/ReadCollectionFuncionarioJsonResponse")]
         System.Threading.Tasks.Task<string> ReadCollectionFuncionarioJsonAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/UpdateSolicitud", ReplyAction="http://tempuri.org/IRegistros/UpdateSolicitudResponse")]
+        bool UpdateSolicitud(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/UpdateSolicitud", ReplyAction="http://tempuri.org/IRegistros/UpdateSolicitudResponse")]
+        System.Threading.Tasks.Task<bool> UpdateSolicitudAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadSolicitudJava", ReplyAction="http://tempuri.org/IRegistros/ReadSolicitudJavaResponse")]
+        string ReadSolicitudJava(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadSolicitudJava", ReplyAction="http://tempuri.org/IRegistros/ReadSolicitudJavaResponse")]
+        System.Threading.Tasks.Task<string> ReadSolicitudJavaAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadPendientes", ReplyAction="http://tempuri.org/IRegistros/ReadPendientesResponse")]
+        string ReadPendientes();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadPendientes", ReplyAction="http://tempuri.org/IRegistros/ReadPendientesResponse")]
+        System.Threading.Tasks.Task<string> ReadPendientesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/CreatePermisoJson", ReplyAction="http://tempuri.org/IRegistros/CreatePermisoJsonResponse")]
+        bool CreatePermisoJson(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/CreatePermisoJson", ReplyAction="http://tempuri.org/IRegistros/CreatePermisoJsonResponse")]
+        System.Threading.Tasks.Task<bool> CreatePermisoJsonAsync(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadPermisoJson", ReplyAction="http://tempuri.org/IRegistros/ReadPermisoJsonResponse")]
+        string ReadPermisoJson(string json);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IRegistros/ReadPermisoJson", ReplyAction="http://tempuri.org/IRegistros/ReadPermisoJsonResponse")]
+        System.Threading.Tasks.Task<string> ReadPermisoJsonAsync(string json);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -139,6 +169,46 @@ namespace Muni.Web.MuniWCF {
         
         public System.Threading.Tasks.Task<string> ReadCollectionFuncionarioJsonAsync() {
             return base.Channel.ReadCollectionFuncionarioJsonAsync();
+        }
+        
+        public bool UpdateSolicitud(string json) {
+            return base.Channel.UpdateSolicitud(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateSolicitudAsync(string json) {
+            return base.Channel.UpdateSolicitudAsync(json);
+        }
+        
+        public string ReadSolicitudJava(string json) {
+            return base.Channel.ReadSolicitudJava(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadSolicitudJavaAsync(string json) {
+            return base.Channel.ReadSolicitudJavaAsync(json);
+        }
+        
+        public string ReadPendientes() {
+            return base.Channel.ReadPendientes();
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadPendientesAsync() {
+            return base.Channel.ReadPendientesAsync();
+        }
+        
+        public bool CreatePermisoJson(string json) {
+            return base.Channel.CreatePermisoJson(json);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreatePermisoJsonAsync(string json) {
+            return base.Channel.CreatePermisoJsonAsync(json);
+        }
+        
+        public string ReadPermisoJson(string json) {
+            return base.Channel.ReadPermisoJson(json);
+        }
+        
+        public System.Threading.Tasks.Task<string> ReadPermisoJsonAsync(string json) {
+            return base.Channel.ReadPermisoJsonAsync(json);
         }
     }
 }

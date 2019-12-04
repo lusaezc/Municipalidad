@@ -32,7 +32,13 @@ namespace Muni.Web
 
         private void CargarDll()
         {
+            //ddlCategoria.Items.Add("sel");
+            //TipoPermiso tipoPermiso = new TipoPermiso();
+            //tipoPermiso.IdTipoPermiso = -1;
+            //tipoPermiso.Nombre = "seleccione";
+            //PermisosColl.Insert(0, tipoPermiso);
             ddlCategoria.DataSource = PermisosColl;
+            //ddlCategoria.Items[0].Attributes.Add("style", "visibility: hidden");
             ddlCategoria.DataTextField = "Nombre";
             ddlCategoria.DataValueField = "IdTipoPermiso";
             ddlCategoria.DataBind();
@@ -116,10 +122,14 @@ namespace Muni.Web
                 e.Cell.BackColor = System.Drawing.Color.LightGray;
                 e.Cell.Enabled = false;
             }
-            if (dt.Date > limite && (dt.DayOfWeek == DayOfWeek.Saturday || dt.DayOfWeek == DayOfWeek.Sunday) && dt.Date < limite.AddDays(diasPermiso))
+            if (dt.Date > limite && dt.Date < limite.AddDays(diasPermiso) && (dt.DayOfWeek == DayOfWeek.Saturday || dt.DayOfWeek == DayOfWeek.Sunday))
             {
                 CantidadDias++;
             }
+            //if (Calendar1.SelectedDate.DayOfWeek == DayOfWeek.Friday && dt.Date == Calendar1.SelectedDate)
+            //{
+            //    CantidadDias=+2;
+            //}
             if (e.Day.Date >= limite.AddDays(CantidadDias))
             {
                 e.Day.IsSelectable = false;
@@ -131,6 +141,7 @@ namespace Muni.Web
         protected void Button1_Click(object sender, EventArgs e)
         {
             List<Solicitud> ls = new SolicitudCollection().ReadAll().ToList();
+
             Solicitud s1 = new Solicitud();
             int CantidadDias = Calendar2.SelectedDate.Day - Calendar1.SelectedDate.Day + 1;
             CantidadDias = CantidadDias - diasFinde + 1;
@@ -145,7 +156,7 @@ namespace Muni.Web
             s1.FechaInicio = Calendar1.SelectedDate;
             s1.FechaFin = Calendar2.SelectedDate;
             s1.Rut = U1.Rut;
-            s1.Estado = 5;
+            s1.Estado = 0;
             if (ddlCategoria.SelectedIndex == 0)
             {
                 U1.DiasAdministrativos = U1.DiasAdministrativos - CantidadDias;

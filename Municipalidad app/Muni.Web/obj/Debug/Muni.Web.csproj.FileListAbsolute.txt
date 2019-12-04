@@ -329,7 +329,6 @@ C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web
 C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web.dll
 C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web.pdb
 C:\Users\Luchito\Desktop\Municipalidad\Municipalidad\Muni.Web\obj\Debug\Muni.Web.csprojAssemblyReference.cache
-C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\itextsharp.xml
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.Web.dll.config
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.Web.dll
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.Web.pdb
@@ -485,6 +484,7 @@ C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\EntityFramework.dll
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.Negocio.pdb
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.Negocio.dll.config
+C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\itextsharp.xml
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Newtonsoft.Json.xml
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\Luchito\Desktop\github portafolio\Municipalidad\Municipalidad app\Muni.Web\bin\Muni.DALC.pdb

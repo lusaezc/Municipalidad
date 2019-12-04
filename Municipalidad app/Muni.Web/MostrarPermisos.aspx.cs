@@ -17,10 +17,7 @@ namespace Muni.Web
         {
             if (!IsPostBack)
             {
-                if (U1.IdRol != 3)
-                {
-                    ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "alertarme()", true);
-                }
+
             }
         }
 
@@ -32,9 +29,6 @@ namespace Muni.Web
             object json = new { data = lp };
             return json;
         }
-
-
-
 
         protected void btnVerificar_Click(object sender, EventArgs e)
         {
@@ -49,11 +43,6 @@ namespace Muni.Web
                     ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(true)", true);
                     break;
                 }
-                else
-                {
-
-                }
-
             }
             ClientScript.RegisterStartupScript(this.GetType(), "mensaje", "verificacion(false)", true);
         }
@@ -67,9 +56,7 @@ namespace Muni.Web
             else
             {
                 int selec = int.Parse(txtId.Text);
-
                 Permiso unidad = new PermisoCollection().ReadAll().First(es => es.IdPermiso == selec);
-
                 unidad.Observaciones = txtNombreEdit.Text;
                 if (unidad.Update())
                 {

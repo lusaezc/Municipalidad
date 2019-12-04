@@ -38,7 +38,6 @@ namespace Muni.Service
         {
             try
             {
-
                 Solicitud s1 = new JavaScriptSerializer().Deserialize<Solicitud>(json);
                 if (s1.Create())
                 {
@@ -51,14 +50,9 @@ namespace Muni.Service
             }
             catch (Exception ex)
             {
-
                 return false;
             }
         }
-
-
-
-
 
         public bool ValidarUsuario(string xml)
         {
@@ -72,12 +66,6 @@ namespace Muni.Service
                 return false;
             }
         }
-
-
-
-
-
-
 
         public bool ValidarUsuarioJson(string json)
         {
@@ -117,7 +105,6 @@ namespace Muni.Service
         {
             List<Funcionario> ls = new FuncionarioCollection().ReadAll();
             var json = new JavaScriptSerializer().Serialize(ls);
-
             return json;
         }
 
@@ -125,9 +112,100 @@ namespace Muni.Service
         {
             List<Solicitud> ls = new SolicitudCollection().ReadAll();
             var json = new JavaScriptSerializer().Serialize(ls);
-
             return json;
         }
 
+
+        public string ReadPendientes()
+        {
+            List<Solicitud> ls = new SolicitudCollection().ReadAll().Where(s => s.Estado == 0).ToList();
+            var json = new JavaScriptSerializer().Serialize(ls);
+            return json;
+        }
+
+        public string ReadSolicitudJava(string json)
+        {
+            try
+            {
+                Solicitud s1 = new JavaScriptSerializer().Deserialize<Solicitud>(json);
+                if (s1.Read())
+                {
+                    string sol1 = new JavaScriptSerializer().Serialize(s1);
+                    return sol1;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
+
+        public bool UpdateSolicitud(string json)
+        {
+            try
+            {
+                Solicitud s1 = new JavaScriptSerializer().Deserialize<Solicitud>(json);
+                if (s1.Update())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false;
+            }
+        }
+
+        public bool CreatePermisoJson(string json)
+        {
+            try
+            {
+
+                Permiso p1 = new JavaScriptSerializer().Deserialize<Permiso>(json);
+                if (p1.Create())
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+        }
+
+        public string ReadPermisoJson(string json)
+        {
+            try
+            {
+                Permiso p1 = new JavaScriptSerializer().Deserialize<Permiso>(json);
+                if (p1.Read())
+                {
+                    var per1 = new JavaScriptSerializer().Serialize(p1);
+                    return per1;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+        }
     }
 }
+
